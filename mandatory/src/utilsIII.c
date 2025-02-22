@@ -2,9 +2,9 @@
 
 float normalize(float angle)
 {
-    angle = fmod(angle, 2 * PI); // Use modulo for floating-point
+    angle = fmod(angle, 2 * PI); // used modulo for floating-point
     if (angle < 0)
-        angle = angle + (2 * PI); // Ensure angle is in [0, 2PI]
+        angle = angle + (2 * PI); // ensure angle is in 0 -> 2PI
     return angle;
 }
 
@@ -60,12 +60,3 @@ int	getPixel(t_cube *cube, int colom, bool flag)
 			return (-1);
 	return (1);
 }
-
-void	initRayData(t_cube *cube, float rayAngle, int colom)
-{
-	cube->ray[colom].closestHit = UNKNOWN;
-	cube->ray[colom].rayAngle = rayAngle;
-	cube->ray[colom].horizHitP = (t_point *)ft_malloc(sizeof(t_point));
-	cube->ray[colom].vertiHitP = (t_point *)ft_malloc(sizeof(t_point));
-}
-

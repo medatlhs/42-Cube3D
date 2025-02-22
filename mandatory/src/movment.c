@@ -46,15 +46,12 @@ void	moveBack(t_cube *cube)
 
 void	updatePosition(t_cube *cube)
 {
-	float	rotationSpeed;
-
-	rotationSpeed = 1;
 	if (cube->player->moveForward == true)
 		moveForward(cube);
 	else if (cube->player->moveBack == true)
 		moveBack(cube);
 	if (cube->player->rotateRight == true)
-		cube->player->degree += rotationSpeed;
+		cube->player->degree += 1;
 	else if (cube->player->rotateLeft == true)
-		cube->player->degree -= rotationSpeed;
+		cube->player->degree -= 1;
 }

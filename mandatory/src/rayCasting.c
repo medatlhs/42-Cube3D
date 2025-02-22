@@ -22,7 +22,7 @@ void	getHorizInter(t_cube *cube, int colom)
 	posY = cube->ray[colom].yInter;
 	while (posX > 0 && posY > 0 && posX < WIDTH && posY < HEIGHT)
 	{
-		// -1 for up 1 for down
+		// getPixel => -1 for up 1 for down
 		if (!wallCheck(cube, posX, posY + getPixel(cube, colom, true)))
 			break ;
 		posX += xstep;
@@ -64,25 +64,44 @@ void getVertInter(t_cube *cube, int colom)
 	cube->ray[colom].vertiHitP->y = posY;
 }
 
-void	renderWall(t_cube *cube, int c)
+void    render_3dscene(t_cube data)
 {
-	double	disprolane;
-	double	wallHeight;
-	int		topPixel;
-	int		botPixel;
+    int i = -1;
+    while (++i < NUM_RAYS)
+    {
+        float perpDistance = data.ray[i].distance * cos(data.ray[i].rayAngle - (data.player->degree * (PI/180)));
+        // float distanceProjPlane = (WIDTH / 2) / tan(HEIGHT / 2);
+        float distanceProjPlane = (WIDTH / 2) / tan((FOV * PI / 180) / 2);
+        float projectedWallHeight = (data.map->sqaureFactorY / perpDistance) * distanceProjPlane;
 
-	cube->ray[c].distance *= cos(cube->ray[c].rayAngle - (cube->player->degree * (M_PI/180)));
-	disprolane = (cube->window->height / 2) / tan((FOV * (PI/180)) / 2);
-	wallHeight = (cube->map->sqaureFactorX/cube->ray[c].distance) * disprolane;
-	topPixel = (cube->window->height/2) - (wallHeight/2);
-	botPixel = (cube->window->height/2) + (wallHeight/2);
-	if (topPixel < 0)
-		topPixel = 0;
-	if (botPixel >= cube->window->height)
-		botPixel = cube->window->height;
-	renderCeiling(cube, c, topPixel);
-	renderStripe(cube, topPixel, botPixel, c);
-	renderFloor(cube, c, botPixel);
+        int wallStripHeight = (int)projectedWallHeight;
+
+        int wallTopPixel = (HEIGHT / 2) - (wallStripHeight / 2);
+        int wallBottomPixel = (HEIGHT / 2) + (wallStripHeight / 2);
+
+        if (wallTopPixel < 0)
+            wallTopPixel = 0;
+        if (wallBottomPixel >= HEIGHT)
+            wallBottomPixel = HEIGHT - 2;
+        int k = wallTopPixel;
+
+        while (k <= wallBottomPixel)
+        {
+			if (data.ray[i].closestHit == HORIZONTAL)
+				myPixelPut(&data, i, k, 0xFFFFFF);
+			else
+				myPixelPut(&data, i, k, 0xD3D3D3);
+			k++;
+        }
+    }
+}
+
+void	initRayData(t_cube *cube, float rayAngle, int colom)
+{
+	cube->ray[colom].closestHit = UNKNOWN;
+	cube->ray[colom].rayAngle = rayAngle;
+	cube->ray[colom].horizHitP = (t_point *)ft_malloc(sizeof(t_point));
+	cube->ray[colom].vertiHitP = (t_point *)ft_malloc(sizeof(t_point));
 }
 
 void	castAllRays(t_cube *cube)
@@ -93,7 +112,7 @@ void	castAllRays(t_cube *cube)
 
 	firstRayAngle = (cube->player->degree - FOV/2) * (PI / 180);
 	firstRayAngle = normalize(firstRayAngle);
-	angleInc = (FOV * PI/180) / (float)cube->window->width;
+	angleInc = (FOV * PI/180) / (float)WIDTH;
 	colom = -1;
 	while (++colom < WIDTH)
 	{
@@ -102,7 +121,6 @@ void	castAllRays(t_cube *cube)
 		getHorizInter(cube, colom);
 		getVertInter(cube, colom);
 		getClosestHit(cube, colom);
-		renderWall(cube, colom);
 		firstRayAngle += angleInc;
 		ft_free(cube->ray[colom].horizHitP, cube->ray[colom].vertiHitP);
 	}

@@ -1,16 +1,16 @@
 #include "../include/cube.h"
 
-
 void	initStartingValues(t_cube *cube)
 {
 	cube->player->x = WIDTH/2;
 	cube->player->y = HEIGHT/2;
 	cube->player->degree = 180;
-	cube->player->speed = 8;
+	cube->player->speed = 5;
 	cube->player->moveForward = false;
 	cube->player->moveBack = false;
 	cube->player->rotateLeft = false;
 	cube->player->rotateRight = false;
+	cube->mybool = 1;
 }
 
 void	*ft_malloc(unsigned long size)

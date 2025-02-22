@@ -63,13 +63,6 @@ typedef struct s_ray
     t_point	*vertiHitP;
 }   t_ray;
 
-typedef struct s_color
-{
-    int r;
-    int g;
-    int b;
-}   t_color;
-
 typedef struct s_cube
 {
     mlx_t       *window;
@@ -78,6 +71,9 @@ typedef struct s_cube
 	t_texture   *texture;
     t_player    *player;
     t_ray       *ray;
+    long        lastFameUpdate;
+    float       constRayAngle;
+    int         mybool;
 }	t_cube;
 
 #endif

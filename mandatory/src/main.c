@@ -12,10 +12,20 @@ void	render(void	*param)
 	cube = (t_cube *)param;
 	clearImage(cube);
 	updatePosition(cube);
-	castAllRays(cube);
 	// renderMapGrid(cube);
 	// renderPlayer(cube);
+	// castRay(cube); // removed
+	castAllRays(cube);
+	render_3dscene(*cube);
 }
+
+// void mouse(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
+// {
+//     t_cube *cube = (t_cube *)param;
+// 	int x, y;
+// 	mlx_get_mouse_pos(cube->window, &x, &y);
+// 	printf("mouse position: (%d,%d)\n", x, y);
+// }
 
 int main()
 {
@@ -35,6 +45,7 @@ int main()
 	getSquareFactor(&cube);
 
 	mlx_key_hook(cube.window, keyPress, &cube);
+	// mlx_mouse_hook(cube.window, mouse, &cube);
 	mlx_loop_hook(cube.window, render, &cube);
 	mlx_image_to_window(cube.window, cube.img, 0, 0);
 
