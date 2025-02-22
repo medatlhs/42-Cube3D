@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
-MLX42 = -L$(HOME)/my_libraries/MLX42/lib -lmlx42
+MLX42 = -L./MLX42/lib -lmlx42
 GLFW  = -L$(HOME)/.brew/Cellar/glfw/3.4/lib -lglfw
 LIBFT = ./libft/libft.a
 SRC = $(shell find ./mandatory/src -name '*.c')

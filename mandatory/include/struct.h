@@ -2,7 +2,8 @@
 #define STRUCT_H
 
 #include "./cube.h"
-#include "/Users/moait-la/my_libraries/MLX42/include/MLX42.h"
+#include "../../MLX42/include/MLX42.h"
+
 #include <stdbool.h>
 
 typedef struct s_texture
@@ -51,7 +52,7 @@ typedef struct s_ray
 {
     float   distance;
     float   rayAngle;
-    float   xInter; // Intersaction
+    float   xInter;
     float   yInter;
 
     bool	facingUp;
