@@ -1,17 +1,17 @@
 #include "../include/cube.h"
-
+#define MINIMAPFACTOR 0.4
 void	renderMapGrid(t_cube *cube)
 {
 	int	row;
 	int	colom;
 	int	x;
 	int	y;
-	
+
 	row = -1;
 	while (++row < NUM_ROWS)
 	{
 		colom = -1;
-		while (++colom < NUM_COLOM)
+		while (++colom < NUM_COLOM )
 		{
 			y = -1;
 			while (++y < cube->map->sqaureFactorY)
@@ -19,22 +19,19 @@ void	renderMapGrid(t_cube *cube)
 				x = -1;
 				while (++x < cube->map->sqaureFactorX)
 				{
-					int positionX = (colom * cube->map->sqaureFactorX) + x;
-					int positionY = (row * cube->map->sqaureFactorY) + y;
-					if (row >= NUM_ROWS || colom >= NUM_COLOM || row < 0 || colom < 0)
+					int positionX = (colom * cube->map->sqaureFactorX) + x ;
+					int positionY = (row * cube->map->sqaureFactorY) + y ;
+					if (row >= NUM_ROWS || colom >= NUM_COLOM|| row < 0 || colom < 0)
                         return;
 					int mapValue = cube->map->map[row][colom];
-					// if (x == 0 || y == 0 || x == cube->map->sqaureFactorX - 1 || y == cube->map->sqaureFactorY - 1)
-                    //     myPixelPut(cube, positionX, positionY, 0x000000);
-                    // else
-                    // {
-                        if (mapValue == 1)
-                            myPixelPut(cube, positionX, positionY, 0x4B4B4B);
-                        else if (mapValue == 0)
-                            myPixelPut(cube, positionX, positionY, 0xFFFFFF);
-                    // }
+                    if (mapValue == 1)
+                    	myPixelPut(cube, positionX*MINIMAPFACTOR, 
+									positionY*MINIMAPFACTOR, 0x4B4B4B);
+                    else if (mapValue == 0)
+                        myPixelPut(cube, positionX*MINIMAPFACTOR, 
+									positionY*MINIMAPFACTOR, getColor(255,255,255,255));
 				}
-			}	
+			}
 		}
 	}
 }
@@ -51,8 +48,8 @@ void	renderPlayer(t_cube *cube)
 		while (++k < playerSize)
 		{
 			mlx_put_pixel(cube->img,
-				cube->player->x + k,
-				cube->player->y + i, 0xFF0000);
+				(cube->player->x * MINIMAPFACTOR) + k,
+				(cube->player->y * MINIMAPFACTOR) + i, 0xFF0000);
 		}
 	}
 }

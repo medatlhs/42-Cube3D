@@ -6,12 +6,19 @@
 
 #include <stdbool.h>
 
+typedef struct s_txture
+{
+    char    *path;
+    char    *key;
+} t_txture;
+
 typedef struct s_texture
 {
     mlx_texture_t	*no;
     mlx_texture_t	*ea;
     mlx_texture_t	*we;
     mlx_texture_t	*so;
+    t_txture        *textures[4];
 }	t_texture;
 
 typedef struct s_map
@@ -23,8 +30,8 @@ typedef struct s_map
 
 typedef struct s_point
 {
-    double	x;
-    double	y;
+    float	x;
+    float	y;
 }	t_point;
 
 typedef struct s_player
@@ -34,8 +41,10 @@ typedef struct s_player
     float       degree;
     int         speed;
 
-    bool	moveForward;
+    bool	moveFront;
     bool	moveBack;
+    bool    moveRight;
+    bool    moveLeft;
     bool	rotateRight;
     bool	rotateLeft;
 } 	t_player;
@@ -52,16 +61,15 @@ typedef struct s_ray
 {
     float   distance;
     float   rayAngle;
-    float   xInter;
-    float   yInter;
-
-    bool	facingUp;
-    bool	facingDown;
     bool	facingRight;
-    bool	facingLeft;
+    float   xInter;
+    bool	facingDown;
+    float   yInter;
     t_hit   closestHit;
     t_point	*horizHitP;
+    bool	facingUp;
     t_point	*vertiHitP;
+    bool	facingLeft;
 }   t_ray;
 
 typedef struct s_cube

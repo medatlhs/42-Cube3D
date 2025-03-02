@@ -11,6 +11,7 @@ void	render(void	*param)
 
 	cube = (t_cube *)param;
 	clearImage(cube);
+	// mlx_resize_image(cube->img, WIDTH, HEIGHT);
 	updatePosition(cube);
 	// renderMapGrid(cube);
 	// renderPlayer(cube);
@@ -18,14 +19,6 @@ void	render(void	*param)
 	castAllRays(cube);
 	render_3dscene(*cube);
 }
-
-// void mouse(mouse_key_t button, action_t action, modifier_key_t mods, void *param)
-// {
-//     t_cube *cube = (t_cube *)param;
-// 	int x, y;
-// 	mlx_get_mouse_pos(cube->window, &x, &y);
-// 	printf("mouse position: (%d,%d)\n", x, y);
-// }
 
 int main()
 {
@@ -40,6 +33,7 @@ int main()
 		ft_error("Error Allocating Img Buffer\n");
 
 	allocations(&cube);
+	loatTextures(&cube);
 	getMap(&cube);
 	initStartingValues(&cube);
 	getSquareFactor(&cube);

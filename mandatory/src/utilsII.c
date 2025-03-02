@@ -1,5 +1,17 @@
 #include "../include/cube.h"
 
+uint32_t rgb_to_argb(int r, int g, int b)
+{     
+    uint32_t color;
+
+	color = 0;
+    color |= 0xFF << 24; 
+    color |= r << 16;
+    color |= g << 8;      
+    color |= b;            
+    return (color);
+}
+
 uint32_t	reverse_bytes(uint32_t c)
 {
 	uint32_t	b;
@@ -21,8 +33,10 @@ void	myPixelPut(t_cube *cube, int x, int y, uint32_t color)
 
 void	getSquareFactor(t_cube *cube)
 {
-	cube->map->sqaureFactorX = floor(WIDTH/NUM_COLOM);
-	cube->map->sqaureFactorY = floor(HEIGHT/NUM_ROWS);
+	// cube->map->sqaureFactorX = floor(WIDTH/NUM_COLOM);
+	// cube->map->sqaureFactorY = floor(HEIGHT/NUM_ROWS);
+	cube->map->sqaureFactorX = CELL_SIZE;
+	cube->map->sqaureFactorY = CELL_SIZE;
 }
 
 void	getClosestHit(t_cube *cube, int colom)

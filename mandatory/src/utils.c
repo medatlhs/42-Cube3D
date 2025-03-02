@@ -2,14 +2,16 @@
 
 void	initStartingValues(t_cube *cube)
 {
-	cube->player->x = WIDTH/2;
-	cube->player->y = HEIGHT/2;
+	cube->player->x = WIDTH/2 + 10;
+	cube->player->y = HEIGHT/2 + 100;
 	cube->player->degree = 180;
-	cube->player->speed = 5;
-	cube->player->moveForward = false;
-	cube->player->moveBack = false;
-	cube->player->rotateLeft = false;
-	cube->player->rotateRight = false;
+	cube->player->moveFront = 0;
+	cube->player->moveBack = 0;
+	cube->player->moveLeft = 0;
+	cube->player->moveRight = 0;
+	cube->player->rotateLeft = 0;
+	cube->player->rotateRight = 0;
+	cube->player->speed = 7;
 	cube->mybool = 1;
 }
 
@@ -29,26 +31,28 @@ void	allocations(t_cube *cube)
 	cube->player = (t_player *)ft_malloc(sizeof(t_player));
 	cube->ray = (t_ray *)ft_malloc(sizeof(t_ray) * WIDTH);
 	cube->texture = (t_texture *)ft_malloc(sizeof(t_texture));
+	cube->ray->horizHitP = (t_point *)ft_malloc(sizeof(t_point));
+	cube->ray->vertiHitP = (t_point *)ft_malloc(sizeof(t_point));
 }
 
 void	setRayDirection(t_cube *cube, int colom)
 {
-	if (cube->ray[colom].rayAngle >= PI && cube->ray[colom].rayAngle < PI * 2)
-	{
+	// cube->ray[colom].facingDown = cube->ray[colom].rayAngle > 0 && cube->ray[colom].rayAngle < M_PI;
+	// cube->ray[colom].facingUp = !cube->ray[colom].facingDown;
+	// cube->ray[colom].facingRight = (cube->ray[colom].rayAngle < (M_PI / 2) || cube->ray[colom].rayAngle > (3 * M_PI / 2));
+	// cube->ray[colom].facingLeft = !cube->ray[colom].facingRight;
+	if (cube->ray[colom].rayAngle >= PI && cube->ray[colom].rayAngle < PI * 2) {
 		cube->ray[colom].facingUp = true;
 		cube->ray[colom].facingDown = false;
 	}
-	else
-	{
+	else {
 		cube->ray[colom].facingDown = true;
 		cube->ray[colom].facingUp = false;
 	}
-	if (cube->ray[colom].rayAngle > 270*(PI/180) || cube->ray[colom].rayAngle < 90*(PI/180))
-	{
+	if (cube->ray[colom].rayAngle > 270*(PI/180) || cube->ray[colom].rayAngle < 90*(PI/180)) {
 		cube->ray[colom].facingRight = true;
 		cube->ray[colom].facingLeft = false;
-	}
-	else
+	} else
 	{
 		cube->ray[colom].facingLeft = true;
 		cube->ray[colom].facingRight = false;
