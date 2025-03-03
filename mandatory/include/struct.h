@@ -39,6 +39,7 @@ typedef struct s_player
     float       x;
     float       y;
     float       degree;
+    int         fov;
     int         speed;
 
     bool	moveFront;

@@ -2,9 +2,9 @@
 
 float normalize(float angle)
 {
-    angle = fmod(angle, 2 * PI); // used modulo for floating-point
+    angle = fmod(angle, 2 * M_PI); // used modulo for floating-point
     if (angle < 0)
-        angle = angle + (2 * PI); // ensure angle is in 0 -> 2PI
+        angle = angle + (2 * M_PI); // ensure angle is in 0 -> 2PI
     return angle;
 }
 
@@ -34,16 +34,16 @@ int inter_check(t_cube *mlx, float angle, float *inter, float *step, int is_hori
 int rayFacingDirection(float angle, int mybool)
 {
     if (!mybool)
-        if (angle >=  PI && angle < PI * 2)
+        if (angle >=  M_PI && angle < M_PI * 2)
             return 0;
     if (mybool == 1)
-        if (angle < PI && angle > 0)
+        if (angle < M_PI && angle > 0)
             return 0;
     if (mybool == 2)
-        if (angle > 270 * (PI/180) || angle < 90 * (PI/180))
+        if (angle > 270 * (M_PI/180) || angle < 90 * (M_PI/180))
             return 0;
     if (mybool == 3)
-        if (angle < 270 * (PI/180) && angle > 90 * (PI/180))
+        if (angle < 270 * (M_PI/180) && angle > 90 * (M_PI/180))
             return 0;
    return 1;
 }

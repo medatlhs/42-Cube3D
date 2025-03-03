@@ -37,8 +37,8 @@ void moveSides(t_cube *cube, int direction)
     float   newX;
     float   newY;
 
-    degreeRad = cube->player->degree * (PI / 180.0);
-    strafeAngle = degreeRad + (direction * (PI / 2.0));
+    degreeRad = cube->player->degree * (M_PI / 180.0);
+    strafeAngle = degreeRad + (direction * (M_PI / 2.0));
     newX = cube->player->x + (cos(strafeAngle) * cube->player->speed);
     newY = cube->player->y + (sin(strafeAngle) * cube->player->speed);
     if (!wallCheck(cube, newX, newY))
@@ -54,7 +54,7 @@ void	moveForward(t_cube *cube)
 	float	newX;
 	float	newY;
 
-	degreeRad = cube->player->degree * (PI/180);
+	degreeRad = cube->player->degree * (M_PI/180);
 	newX = cube->player->x + (cos(degreeRad) * cube->player->speed);
 	newY = cube->player->y + (sin(degreeRad) * cube->player->speed);
 	if (!wallCheck(cube, newX-1, newY-1))
@@ -69,7 +69,7 @@ void	moveBack(t_cube *cube)
 	float	newX;
 	float	newY;
 
-	degreeRad = cube->player->degree * (PI/180);
+	degreeRad = cube->player->degree * (M_PI/180);
 	newX = cube->player->x - (cos(degreeRad) * cube->player->speed);
 	newY = cube->player->y - (sin(degreeRad) * cube->player->speed);
 	if (!wallCheck(cube, newX -1, newY-1))

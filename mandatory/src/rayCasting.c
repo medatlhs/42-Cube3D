@@ -20,10 +20,6 @@ void	getHorizInter(t_cube *cube, int colom)
 	float	posX, posY;
 	posX = cube->ray[colom].xInter;
 	posY = cube->ray[colom].yInter;
-	// printf("Yinter%f\n", xstep);
-	// printf("Xinter%f\n", ystep);
-	// printf("Yinter%f\n", cube->ray[colom].xInter);
-	// printf("Xinter%f\n", cube->ray[colom].yInter);
 	while (posX > 0 && posY > 0 && posX < WIDTH && posY < HEIGHT)
 	{
 		// getPixel => -1 for up 1 for down
@@ -35,17 +31,13 @@ void	getHorizInter(t_cube *cube, int colom)
 
 	cube->ray[colom].horizHitP->y = posY;
 	cube->ray[colom].horizHitP->x = posX;
-	// printf("XinterVER %f\n", cube->ray[colom].horizHitP->x);
-	// printf("YinterVER %f\n", cube->ray[colom].horizHitP->y);
 }
 
 void getVertInter(t_cube *cube, int colom)
 {
-	if (cube->ray[colom].facingRight) {
-        cube->ray[colom].xInter = floor(cube->player->x / CELL_SIZE) * CELL_SIZE + CELL_SIZE;
-    } else {
-        cube->ray[colom].xInter = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
-    }
+    cube->ray[colom].xInter = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
+	if (cube->ray[colom].facingRight)
+    	cube->ray[colom].xInter += CELL_SIZE;
 	cube->ray[colom].yInter = cube->player->y + (cube->ray[colom].xInter - cube->player->x) * (tan(cube->ray[colom].rayAngle));
 
 	float xstep, ystep;
@@ -82,8 +74,8 @@ void    render_3dscene(t_cube data)
     int i = -1;
     while (++i < NUM_RAYS)
     {
-        float perpDistance = data.ray[i].distance * cos(data.ray[i].rayAngle - (data.player->degree * (PI/180)));
-        float distanceProjPlane = (WIDTH / 2) / tan((FOV * (PI / 180)) / 2);
+        float perpDistance = data.ray[i].distance * cos(data.ray[i].rayAngle - (data.player->degree * (M_PI/180)));
+        float distanceProjPlane = (WIDTH / 2) / tan((data.player->fov * (M_PI / 180)) / 2);
         float projectedWallHeight = (data.map->sqaureFactorY / perpDistance) * distanceProjPlane;
 
         int wallStripHeight = (int)projectedWallHeight;
@@ -131,9 +123,9 @@ void	castAllRays(t_cube *cube)
 	float	angleInc;
 	int		colom;
 
-	firstRayAngle = (cube->player->degree - FOV/2) * (PI / (float)180);
+	firstRayAngle = (cube->player->degree - cube->player->fov/2) * (M_PI / (float)180);
 	firstRayAngle = normalize(firstRayAngle);
-	angleInc = (FOV * PI/180) / (float)WIDTH;
+	angleInc = (cube->player->fov * M_PI/180) / (float)WIDTH;
 	colom = -1;
 	while (++colom < WIDTH)
 	{

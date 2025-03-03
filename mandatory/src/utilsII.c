@@ -33,8 +33,6 @@ void	myPixelPut(t_cube *cube, int x, int y, uint32_t color)
 
 void	getSquareFactor(t_cube *cube)
 {
-	// cube->map->sqaureFactorX = floor(WIDTH/NUM_COLOM);
-	// cube->map->sqaureFactorY = floor(HEIGHT/NUM_ROWS);
 	cube->map->sqaureFactorX = CELL_SIZE;
 	cube->map->sqaureFactorY = CELL_SIZE;
 }

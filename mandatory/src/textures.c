@@ -36,6 +36,7 @@ mlx_texture_t *getTexture(t_texture texture, t_ray ray)
 		else
 			return (texture.ea);
 	}
+	return (NULL);
 }
 
 float	getTextureX(t_cube data, int colom)
