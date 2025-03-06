@@ -16,9 +16,30 @@ void	checkRelease(mlx_key_data_t keydata, void *param)
 		((t_cube *)(param))->player->moveLeft = false;
 }
 
+void	escape(t_cube *cube)
+{
+	ft_free(cube->map, cube->player, cube->ray);
+	ft_free(cube->texture, NULL, NULL);
+	ft_putstr_fd("closed!\n", 1);
+	exit(0);
+}
+void	ft_close(void* param)
+{
+	t_cube *cube;
+
+	cube = (t_cube *)param;
+	printf("here\n");
+	ft_free(cube->map, cube->player, cube->ray);
+	ft_free(cube->texture->we, cube->texture, NULL);
+	ft_putstr_fd("closed!\n", 1);
+	exit(0);
+}
+
 void	keyPress(mlx_key_data_t keydata, void *param)
 {
-	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		escape((t_cube *)param);
+	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		((t_cube *)(param))->player->moveFront = true;
 	else if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
 		((t_cube *)(param))->player->moveBack = true;

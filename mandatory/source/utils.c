@@ -2,9 +2,9 @@
 
 void	initStartingValues(t_cube *cube)
 {
-	cube->player->x = WIDTH/2 + 10;
-	cube->player->y = HEIGHT/2 + 100;
-	cube->player->degree = 180;
+	cube->player->x = WIDTH/2;
+	cube->player->y = HEIGHT/2;
+	cube->player->degree = 90;
 	cube->player->fov = 60;
 	cube->player->moveFront = 0;
 	cube->player->moveBack = 0;
@@ -32,34 +32,14 @@ void	allocations(t_cube *cube)
 	cube->player = (t_player *)ft_malloc(sizeof(t_player));
 	cube->ray = (t_ray *)ft_malloc(sizeof(t_ray) * WIDTH);
 	cube->texture = (t_texture *)ft_malloc(sizeof(t_texture));
-	cube->ray->horizHitP = (t_point *)ft_malloc(sizeof(t_point));
-	cube->ray->vertiHitP = (t_point *)ft_malloc(sizeof(t_point));
 }
 
 void	setRayDirection(t_cube *cube, int colom)
 {
-	// cube->ray[colom].facingDown = cube->ray[colom].rayAngle > 0 && cube->ray[colom].rayAngle < M_PI;
-	// cube->ray[colom].facingUp = !cube->ray[colom].facingDown;
-	// cube->ray[colom].facingRight = (cube->ray[colom].rayAngle < (M_PI / 2) || cube->ray[colom].rayAngle > (3 * M_PI / 2));
-	// cube->ray[colom].facingLeft = !cube->ray[colom].facingRight;
-
-	
-	if (cube->ray[colom].rayAngle >= M_PI && cube->ray[colom].rayAngle < M_PI * 2) {
-		cube->ray[colom].facingUp = true;
-		cube->ray[colom].facingDown = false;
-	}
-	else {
-		cube->ray[colom].facingDown = true;
-		cube->ray[colom].facingUp = false;
-	}
-	if (cube->ray[colom].rayAngle > 270*(M_PI/180) || cube->ray[colom].rayAngle < 90*(M_PI/180)) {
-		cube->ray[colom].facingRight = true;
-		cube->ray[colom].facingLeft = false;
-	} else
-	{
-		cube->ray[colom].facingLeft = true;
-		cube->ray[colom].facingRight = false;
-	}
+	cube->ray[colom].facingDown = cube->ray[colom].rayAngle > 0 && cube->ray[colom].rayAngle < M_PI;
+	cube->ray[colom].facingUp = !cube->ray[colom].facingDown;
+	cube->ray[colom].facingRight = cube->ray[colom].rayAngle < (M_PI/2) || cube->ray[colom].rayAngle > (3*M_PI)/2;
+	cube->ray[colom].facingLeft = !cube->ray[colom].facingRight;
 }
 
 void draw_x_sign(t_cube *cube, int x, int y, int size, int color)
@@ -78,7 +58,7 @@ void draw_x_sign(t_cube *cube, int x, int y, int size, int color)
     }
 }
 
-void ft_free(void *ptr, void *ptr2)
+void ft_free(void *ptr, void *ptr2, void *ptr3)
 {
     if (ptr)
 	{
@@ -90,4 +70,9 @@ void ft_free(void *ptr, void *ptr2)
         free(ptr2);
         ptr2 = NULL;
     }
+	if (ptr3)
+	{
+		free(ptr3);
+        ptr3 = NULL;
+	}
 }

@@ -2,9 +2,9 @@
 
 float normalize(float angle)
 {
-    angle = fmod(angle, 2 * M_PI); // used modulo for floating-point
+    angle = fmod(angle, 2 * M_PI);
     if (angle < 0)
-        angle = angle + (2 * M_PI); // ensure angle is in 0 -> 2PI
+        angle = angle + (2 * M_PI);
     return angle;
 }
 

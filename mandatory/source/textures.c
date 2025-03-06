@@ -42,24 +42,27 @@ mlx_texture_t *getTexture(t_texture texture, t_ray ray)
 float	getTextureX(t_cube data, int colom)
 {
 	float textureX;
-	if (data.ray[colom].closestHit == HORIZONTAL) {
+	if (data.ray[colom].closestHit == HORIZONTAL)
+	{
 		float positionInWall = fmodf(data.ray[colom].horizHitP->x ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
-	} else if (data.ray[colom].closestHit == VERTICAL) {
+	}
+	else if (data.ray[colom].closestHit == VERTICAL)
+	{
 		float positionInWall = fmodf(data.ray[colom].vertiHitP->y ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
 	}
 	return textureX;
 }
 
-int	getTextureY(mlx_texture_t *texture, t_cube *cube, int y, int wall_h)
+int	getTextureY(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 {
 	double	step;
 	double	offset_y;
 	int		wall_t;
 
-	wall_t = (cube->window->height / 2) - (wall_h / 2);
-	step = (double)texture->height / wall_h;
+	wall_t = (cube->window->height / 2) - (wallHeight / 2);
+	step = (double)texture->height / wallHeight;
 	offset_y = ((y - wall_t) * step);
 	if (offset_y >= texture->height)
 		offset_y = texture->height - 1;

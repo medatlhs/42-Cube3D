@@ -8,7 +8,7 @@ uint32_t rgb_to_argb(int r, int g, int b)
     color |= 0xFF << 24; 
     color |= r << 16;
     color |= g << 8;      
-    color |= b;            
+    color |= b;
     return (color);
 }
 
@@ -49,9 +49,11 @@ void	getClosestHit(t_cube *cube, int colom)
 	if (horizDist < vertiDist)
 	{
 		cube->ray[colom].closestHit = HORIZONTAL;
-		cube->ray[colom].distance = horizDist;
+		cube->ray[colom].distance = horizDist * cos(cube->ray[colom].rayAngle -
+			(cube->player->degree * (M_PI/180)));
 		return ;
 	}
 	cube->ray[colom].closestHit = VERTICAL;
-	cube->ray[colom].distance = vertiDist;
+	cube->ray[colom].distance = vertiDist * cos(cube->ray[colom].rayAngle -
+		(cube->player->degree * (M_PI/180)));
 }

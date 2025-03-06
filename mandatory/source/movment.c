@@ -6,7 +6,7 @@ void	updatePosition(t_cube *cube)
 		moveForward(cube);
 	else if (cube->player->moveBack == true)
 		moveBack(cube);
-	if (cube->player->moveRight == true)
+	else if (cube->player->moveRight == true)
 		moveSides(cube, 1);
 	else if (cube->player->moveLeft == true)
 		moveSides(cube, -1);

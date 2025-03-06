@@ -60,17 +60,17 @@ typedef enum s_hit
 
 typedef struct s_ray
 {
-    float   distance;
-    float   rayAngle;
-    bool	facingRight;
     float   xInter;
-    bool	facingDown;
     float   yInter;
+    float   rayAngle;
+    float   distance;
+    bool	facingRight;
+    bool	facingDown;
+    bool	facingLeft;
+    bool	facingUp;
     t_hit   closestHit;
     t_point	*horizHitP;
-    bool	facingUp;
     t_point	*vertiHitP;
-    bool	facingLeft;
 }   t_ray;
 
 typedef struct s_cube
