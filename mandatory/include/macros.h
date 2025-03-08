@@ -11,5 +11,6 @@
 # define NUM_RAYS WIDTH
 # define CELL_SIZE 64
 #define MINIMAPFACTOR 1
+#define SCALINGFACTOR 100000
 
 #endif

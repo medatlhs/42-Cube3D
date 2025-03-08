@@ -8,29 +8,6 @@ float normalize(float angle)
     return angle;
 }
 
-int inter_check(t_cube *mlx, float angle, float *inter, float *step, int is_horizon)
-{
-	if (is_horizon)
-	{
-		if (angle > 0 && angle < M_PI)
-		{
-			*inter += mlx->map->sqaureFactorY;
-			return (-1);
-		}
-		*step *= -1;
-	}
-	else
-	{
-		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2)) 
-		{
-			*inter += mlx->map->sqaureFactorX;
-			return (-1);
-		}
-		*step *= -1;
-	}
-	return (1);
-}
-
 int rayFacingDirection(float angle, int mybool)
 {
     if (!mybool)
@@ -58,5 +35,5 @@ int	getPixel(t_cube *cube, int colom, bool flag)
 	else
 		if (cube->ray[colom].rayAngle > M_PI / 2 && cube->ray[colom].rayAngle < 3 * (M_PI / 2))
 			return (-1);
-	return (1);
+	return (0);
 }

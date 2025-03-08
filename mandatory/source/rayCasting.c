@@ -28,8 +28,8 @@ void	castAllRays(t_cube *cube)
 		firstRayAngleR = normalize(firstRayAngleR);
 		initRayData(cube, firstRayAngleR, colom);
 		setRayDirection(cube, colom);
-		getVertInter(cube, colom);
 		getHorizInter(cube, colom);
+		getVertInter(cube, colom);
 		getClosestHit(cube, colom);
 		firstRayAngleR += angleIncR;
 		// ft_free(cube->ray[colom].horizHitP, cube->ray[colom].vertiHitP, );

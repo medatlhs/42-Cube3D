@@ -42,22 +42,6 @@ void	setRayDirection(t_cube *cube, int colom)
 	cube->ray[colom].facingLeft = !cube->ray[colom].facingRight;
 }
 
-void draw_x_sign(t_cube *cube, int x, int y, int size, int color)
-{
-    for (int i = -size; i <= size; i++)
-    {
-        int x_offset1 = x + i;
-        int y_offset1 = y + i;
-        if (x_offset1 >= 0 && y_offset1 >= 0 && x_offset1 < WIDTH && y_offset1 < HEIGHT)
-            myPixelPut(cube, x_offset1, y_offset1, 0xff0000);
-        int x_offset2 = x + i;
-        int y_offset2 = y - i;
-        if (x_offset2 >= 0 && y_offset2 >= 0 && x_offset2 < WIDTH && y_offset2 < HEIGHT)
-
-            myPixelPut(cube, x_offset2, y_offset2, color);
-    }
-}
-
 void ft_free(void *ptr, void *ptr2, void *ptr3)
 {
     if (ptr)

@@ -3,6 +3,8 @@
 void    loatTextures(t_cube *cube)
 {
     cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/CUBE3D/assets/textures/texture.png");
+	if (!cube->texture->we)
+		ft_error("walawalawalawalawala\n");
 	return ;
 	int i = -1;
 	while (cube->texture->textures[++i])
@@ -59,11 +61,11 @@ int	getTextureY(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 {
 	double	step;
 	double	offset_y;
-	int		wall_t;
+	int		wallTopPixel;
 
-	wall_t = (cube->window->height / 2) - (wallHeight / 2);
+	wallTopPixel = (cube->window->height / 2) - (wallHeight / 2);
 	step = (double)texture->height / wallHeight;
-	offset_y = ((y - wall_t) * step);
+	offset_y = ((y - wallTopPixel) * step);
 	if (offset_y >= texture->height)
 		offset_y = texture->height - 1;
 	if (offset_y < 0)

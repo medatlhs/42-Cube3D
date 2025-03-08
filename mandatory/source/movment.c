@@ -11,9 +11,9 @@ void	updatePosition(t_cube *cube)
 	else if (cube->player->moveLeft == true)
 		moveSides(cube, -1);
 	if (cube->player->rotateRight == true)
-		cube->player->degree += 2;
+		cube->player->degree += 4;
 	else if (cube->player->rotateLeft == true)
-		cube->player->degree -= 2;
+		cube->player->degree -= 4;
 }
 
 int	wallCheck(t_cube *cube, int	newX, int newY)
@@ -57,10 +57,10 @@ void	moveForward(t_cube *cube)
 	degreeRad = cube->player->degree * (M_PI/180);
 	newX = cube->player->x + (cos(degreeRad) * cube->player->speed);
 	newY = cube->player->y + (sin(degreeRad) * cube->player->speed);
-	if (!wallCheck(cube, newX-1, newY-1))
-		return ;
-	cube->player->x = newX;
-	cube->player->y = newY;
+	if (wallCheck(cube, newX, cube->player->y))
+		cube->player->x = newX;
+	if (wallCheck(cube, cube->player->x, newY))
+		cube->player->y = newY;
 }
 
 void	moveBack(t_cube *cube)
@@ -72,8 +72,8 @@ void	moveBack(t_cube *cube)
 	degreeRad = cube->player->degree * (M_PI/180);
 	newX = cube->player->x - (cos(degreeRad) * cube->player->speed);
 	newY = cube->player->y - (sin(degreeRad) * cube->player->speed);
-	if (!wallCheck(cube, newX -1, newY-1))
-		return ;
-	cube->player->x = newX;
-	cube->player->y = newY;
+	if (wallCheck(cube, newX, cube->player->y))
+		cube->player->x = newX;
+	if (wallCheck(cube, cube->player->x, newY))
+		cube->player->y = newY;
 }

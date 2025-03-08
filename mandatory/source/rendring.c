@@ -6,13 +6,18 @@ void	renderCeilling(t_cube cube, int x, int wallTopPixel)
 
 	k = -1;
 	while ( ++k < wallTopPixel)
-		myPixelPut(&cube, x, k, getColor(168, 168, 168, 255));
+		myPixelPut(&cube, x, k, getColor(80, 80, 80, 255));
 }
 
 void	renderFloor(t_cube cube, int x, int wallBottomPixel) 
 {
 	while (++wallBottomPixel < HEIGHT)
-		myPixelPut(&cube, x, wallBottomPixel, getColor(18, 12, 9, 255));
+	{
+		if (x % 2 == 0)
+			myPixelPut(&cube, x, wallBottomPixel, getColor(150, 150, 150, 255));
+		else
+			myPixelPut(&cube, x, wallBottomPixel, getColor(0, 0, 0, 255));
+	}
 }
 
 void	renderStripe(t_cube cube, int wallHeight, int colom, int topPixel, int BottomPixel)
@@ -37,7 +42,6 @@ void	renderStripe(t_cube cube, int wallHeight, int colom, int topPixel, int Bott
 
 void    render3Dscene(t_cube cube)
 {
-	int		distanceProjPlane;
 	int		wallHeight;
 	int		wallTopPixel;
 	int		wallBottomPixel;
@@ -45,9 +49,8 @@ void    render3Dscene(t_cube cube)
 
     colom = -1;
     while (++colom < NUM_RAYS)
-    {
-        distanceProjPlane = (WIDTH / 2) / tan((cube.player->fov * (M_PI / 180)) / 2);
-        wallHeight = (CELL_SIZE / cube.ray[colom].distance) * distanceProjPlane;
+    {		
+		wallHeight = SCALINGFACTOR / cube.ray[colom].distance;
         wallTopPixel = (HEIGHT / 2) - (wallHeight / 2);
         wallBottomPixel = (HEIGHT / 2) + (wallHeight / 2);
 		if (wallTopPixel < 0)

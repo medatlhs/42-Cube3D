@@ -24,8 +24,6 @@ typedef struct s_texture
 typedef struct s_map
 {
 	int	map[NUM_ROWS][NUM_COLOM];
-    int sqaureFactorX;
-    int sqaureFactorY;
 }	t_map;
 
 typedef struct s_point

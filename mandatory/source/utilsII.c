@@ -31,12 +31,6 @@ void	myPixelPut(t_cube *cube, int x, int y, uint32_t color)
 	mlx_put_pixel(cube->img, x, y, color);
 }
 
-void	getSquareFactor(t_cube *cube)
-{
-	cube->map->sqaureFactorX = CELL_SIZE;
-	cube->map->sqaureFactorY = CELL_SIZE;
-}
-
 void	getClosestHit(t_cube *cube, int colom)
 {
 	float	horizDist;

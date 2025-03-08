@@ -18,7 +18,6 @@ void	render(void	*param)
 
 	cube = (t_cube *)param;
 	clearImage(cube);
-	mlx_resize_image(cube->img, WIDTH, HEIGHT);
 	updatePosition(cube);
 	castAllRays(cube);
 	render3Dscene(*cube);
@@ -45,7 +44,6 @@ int main()
 	loatTextures(&cube);
 	getMap(&cube);
 	initStartingValues(&cube);
-	getSquareFactor(&cube);
 
 	mlx_key_hook(cube.window, keyPress, &cube);
 	mlx_close_hook(cube.window, ft_close, &cube);
