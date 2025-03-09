@@ -32,6 +32,7 @@ int main()
 {
 	t_cube cube;
 	atexit(f);
+
 	cube.window = mlx_init(WIDTH, HEIGHT, "CUBE3D", false);
 	if (!cube.window)
 		ft_error("Error Creating Window\n");

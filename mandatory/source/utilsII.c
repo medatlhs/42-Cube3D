@@ -24,6 +24,11 @@ uint32_t	reverse_bytes(uint32_t c)
 	return (b);
 }
 
+int	getColor(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
+{
+	return (r << 24 | g << 16 | b << 8 | a << 0);
+}
+
 void	myPixelPut(t_cube *cube, int x, int y, uint32_t color)
 {
 	if (x > WIDTH || x < 0 || y > HEIGHT || y < 0)

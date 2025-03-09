@@ -1,10 +1,5 @@
 #include "../include/cube.h"
 
-int	getColor(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
-{
-	return (r << 24 | g << 16 | b << 8 | a << 0);
-}
-
 void	initRayData(t_cube *cube, float rayAngle, int colom)
 {
 	cube->ray[colom].horizHitP = (t_point *)ft_malloc(sizeof(t_point));

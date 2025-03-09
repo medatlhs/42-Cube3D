@@ -6,7 +6,7 @@ void	renderCeilling(t_cube cube, int x, int wallTopPixel)
 
 	k = -1;
 	while ( ++k < wallTopPixel)
-		myPixelPut(&cube, x, k, getColor(80, 80, 80, 255));
+		myPixelPut(&cube, x, k, getColor(50, 50, 50, 255));
 }
 
 void	renderFloor(t_cube cube, int x, int wallBottomPixel) 
@@ -35,6 +35,8 @@ void	renderStripe(t_cube cube, int wallHeight, int colom, int topPixel, int Bott
     {
 		textureY = getTextureY(cube.texture->we, &cube, k, wallHeight);
 		pixelPos = (textureY * cube.texture->we->width) + textureX;
+		// printf("before: %d\n", texturePixels[pixelPos]);
+		// printf("after : %d\n", reverse_bytes(texturePixels[pixelPos]));
 		myPixelPut(&cube, colom, k, reverse_bytes(texturePixels[pixelPos]));
 		k++;
     }
@@ -50,7 +52,7 @@ void    render3Dscene(t_cube cube)
     colom = -1;
     while (++colom < NUM_RAYS)
     {		
-		wallHeight = SCALINGFACTOR / cube.ray[colom].distance;
+		wallHeight = HEIGHT  * 100 / cube.ray[colom].distance;
         wallTopPixel = (HEIGHT / 2) - (wallHeight / 2);
         wallBottomPixel = (HEIGHT / 2) + (wallHeight / 2);
 		if (wallTopPixel < 0)

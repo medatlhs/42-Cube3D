@@ -17,7 +17,7 @@ void	myPixelPut(t_cube *cube, int x, int y, uint32_t color);
 void	getSquareFactor(t_cube *cube);
 void	initStartingValues(t_cube *cube);
 void	allocations(t_cube *cube);
-void ft_free(void *ptr, void *ptr2, void *ptr3);
+void    ft_free(void *ptr, void *ptr2, void *ptr3);
 void	castAllRays(t_cube *cube);
 void	escape(t_cube *cube);
 void	ft_close(void* param);
