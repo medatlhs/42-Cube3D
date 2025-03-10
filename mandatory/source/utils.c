@@ -32,6 +32,7 @@ void	allocations(t_cube *cube)
 	cube->player = (t_player *)ft_malloc(sizeof(t_player));
 	cube->ray = (t_ray *)ft_malloc(sizeof(t_ray) * WIDTH);
 	cube->texture = (t_texture *)ft_malloc(sizeof(t_texture));
+	cube->sprite = (t_sprite *)ft_malloc(sizeof(t_sprite));
 }
 
 void	setRayDirection(t_cube *cube, int colom)

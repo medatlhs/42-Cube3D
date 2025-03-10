@@ -23,7 +23,7 @@ typedef struct s_texture
 
 typedef struct s_map
 {
-	int	map[NUM_ROWS][NUM_COLOM];
+	int	map[ROWS][COLOMS];
 }	t_map;
 
 typedef struct s_point
@@ -31,6 +31,15 @@ typedef struct s_point
     float	x;
     float	y;
 }	t_point;
+
+typedef struct s_sprite
+{
+    float   x;
+    float   y;
+    bool    fire;
+    mlx_texture_t *spirites[SPRITES];
+    mlx_image_t *images[SPRITES];
+} t_sprite;
 
 typedef struct s_player
 {
@@ -79,7 +88,9 @@ typedef struct s_cube
 	t_texture   *texture;
     t_player    *player;
     t_ray       *ray;
+    t_sprite    *sprite;
     long        lastFameUpdate;
+    bool        renderdBefore;
     float       constRayAngle;
     int         mybool;
 }	t_cube;

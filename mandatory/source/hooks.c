@@ -37,6 +37,7 @@ void	ft_close(void* param)
 
 void	keyPress(mlx_key_data_t keydata, void *param)
 {
+	printf("%d\n", keydata.key);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape((t_cube *)param);
 	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)

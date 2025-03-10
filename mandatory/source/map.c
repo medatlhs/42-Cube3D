@@ -21,10 +21,10 @@ void	getMap(t_cube *cube)
     };
 	// allocations(cube);
     int i = -1;
-    while (++i < NUM_ROWS)
+    while (++i < COLOMS)
     {
        int j = -1;
-       while (++j < NUM_COLOM)
+       while (++j < ROWS)
        {
             cube->map->map[i][j] = map[i][j];
        }

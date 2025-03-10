@@ -52,4 +52,6 @@ uint32_t reverse_bytes(uint32_t c);
 uint32_t rgb_to_argb(int r, int g, int b);
 mlx_texture_t	*get_texture(t_cube *cube);
 
+
+
 #endif
