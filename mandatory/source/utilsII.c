@@ -41,18 +41,18 @@ void	getClosestHit(t_cube *cube, int colom)
 	float	horizDist;
 	float	vertiDist;
 
-	horizDist = sqrt(pow(cube->ray[colom].horizHitP->x - cube->player->x, 2) +
-		pow(cube->ray[colom].horizHitP->y - cube->player->y, 2));
-	vertiDist = sqrt(pow(cube->ray[colom].vertiHitP->x - cube->player->x, 2) +
-		pow(cube->ray[colom].vertiHitP->y - cube->player->y, 2));
+	horizDist = sqrt(pow(cube->ray[colom].horiz_hitp->x - cube->player->x, 2) +
+		pow(cube->ray[colom].horiz_hitp->y - cube->player->y, 2));
+	vertiDist = sqrt(pow(cube->ray[colom].verti_hitp->x - cube->player->x, 2) +
+		pow(cube->ray[colom].verti_hitp->y - cube->player->y, 2));
 	if (horizDist < vertiDist)
 	{
-		cube->ray[colom].closestHit = HORIZONTAL;
-		cube->ray[colom].distance = horizDist * cos(cube->ray[colom].rayAngle -
+		cube->ray[colom].closest_hit = HORIZONTAL;
+		cube->ray[colom].distance = horizDist * cos(cube->ray[colom].ray_angle -
 			(cube->player->degree * (M_PI/180)));
 		return ;
 	}
-	cube->ray[colom].closestHit = VERTICAL;
-	cube->ray[colom].distance = vertiDist * cos(cube->ray[colom].rayAngle -
+	cube->ray[colom].closest_hit = VERTICAL;
+	cube->ray[colom].distance = vertiDist * cos(cube->ray[colom].ray_angle -
 		(cube->player->degree * (M_PI/180)));
 }

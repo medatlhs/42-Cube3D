@@ -3,7 +3,7 @@
 
 #include "./cube.h"
 #include "../../MLX42/include/MLX42.h"
-
+#include "macros.h"
 #include <stdbool.h>
 
 typedef struct s_txture
@@ -21,10 +21,7 @@ typedef struct s_texture
     t_txture        *textures[4];
 }	t_texture;
 
-typedef struct s_map
-{
-	int	map[ROWS][COLOMS];
-}	t_map;
+
 
 typedef struct s_point
 {
@@ -34,11 +31,11 @@ typedef struct s_point
 
 typedef struct s_sprite
 {
-    float   x;
-    float   y;
-    bool    fire;
-    mlx_texture_t *spirites[SPRITES];
-    mlx_image_t *images[SPRITES];
+    float           x;
+    float           y;
+    bool            fire;
+    mlx_image_t     *images[SPRITES];
+    mlx_texture_t   *spirites[SPRITES];
 } t_sprite;
 
 typedef struct s_player
@@ -48,6 +45,9 @@ typedef struct s_player
     float       degree;
     int         fov;
     int         speed;
+
+    float   rayInterX;
+    float   rayInterY;
 
     bool	moveFront;
     bool	moveBack;
@@ -67,18 +67,29 @@ typedef enum s_hit
 
 typedef struct s_ray
 {
-    float   xInter;
-    float   yInter;
-    float   rayAngle;
+    float   x_nearest;
+    float   y_nearest;
+    float   ray_angle;
     float   distance;
     bool	facingRight;
     bool	facingDown;
     bool	facingLeft;
     bool	facingUp;
-    t_hit   closestHit;
-    t_point	*horizHitP;
-    t_point	*vertiHitP;
+    t_hit   closest_hit;
+    t_point	*horiz_hitp;
+    t_point	*verti_hitp;
 }   t_ray;
+
+typedef struct s_map
+{
+	int		*F;
+	int		*C;
+	char	**textures;
+	char	**map;
+	char	testingMap[ROWS][COLOMS];
+	int		colum;
+	int		row;
+}			t_map;
 
 typedef struct s_cube
 {

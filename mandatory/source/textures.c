@@ -2,11 +2,13 @@
 
 void    loatTextures(t_cube *cube)
 {
-    cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/CUBE3D/assets/textures/texture.png");
+    cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/42-Cube3D-chahlaoui/assets/textures/texture.png");
 	if (!cube->texture->we)
 		ft_error("walawalawalawalawala\n");
 	return ;
-	int i = -1;
+	int	i;
+
+	i = -1;
 	while (cube->texture->textures[++i])
 	{
 		if (!ft_strncmp(cube->texture->textures[i]->key, "NO", 2))
@@ -24,16 +26,16 @@ void    loatTextures(t_cube *cube)
 
 mlx_texture_t *getTexture(t_texture texture, t_ray ray)
 {
-	if (ray.closestHit == HORIZONTAL)
+	if (ray.closest_hit == HORIZONTAL)
 	{
-		if (ray.rayAngle < M_PI && ray.rayAngle > 0)
+		if (ray.ray_angle < M_PI && ray.ray_angle > 0)
 			return (texture.no);
 		else
 			return (texture.so);
 	}
-	else if (ray.closestHit == VERTICAL)
+	else if (ray.closest_hit == VERTICAL)
 	{
-		if (ray.rayAngle > M_PI/2 && ray.rayAngle < 3 * (M_PI/2) )
+		if (ray.ray_angle > M_PI/2 && ray.ray_angle < 3 * (M_PI/2) )
 			return (texture.we);
 		else
 			return (texture.ea);
@@ -44,14 +46,14 @@ mlx_texture_t *getTexture(t_texture texture, t_ray ray)
 float	getTextureX(t_cube data, int colom)
 {
 	float textureX;
-	if (data.ray[colom].closestHit == HORIZONTAL)
+	if (data.ray[colom].closest_hit == HORIZONTAL)
 	{
-		float positionInWall = fmodf(data.ray[colom].horizHitP->x ,(float)CELL_SIZE);
+		float positionInWall = fmodf(data.ray[colom].horiz_hitp->x ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
 	}
-	else if (data.ray[colom].closestHit == VERTICAL)
+	else if (data.ray[colom].closest_hit == VERTICAL)
 	{
-		float positionInWall = fmodf(data.ray[colom].vertiHitP->y ,(float)CELL_SIZE);
+		float positionInWall = fmodf(data.ray[colom].verti_hitp->y ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
 	}
 	return textureX;

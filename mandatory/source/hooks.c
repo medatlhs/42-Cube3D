@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 15:34:32 by moait-la          #+#    #+#             */
+/*   Updated: 2025/03/12 15:36:16 by moait-la         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cube.h"
 
-void	checkRelease(mlx_key_data_t keydata, void *param)
+void	check_release(mlx_key_data_t keydata, void *param)
 {
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_RELEASE)
 		((t_cube *)(param))->player->moveFront = false;
@@ -18,26 +30,26 @@ void	checkRelease(mlx_key_data_t keydata, void *param)
 
 void	escape(t_cube *cube)
 {
-	ft_free(cube->map, cube->player, cube->ray);
-	ft_free(cube->texture, NULL, NULL);
+	ft_free(cube->map, cube->player);
+	ft_free(cube->texture, cube->ray);
 	ft_putstr_fd("closed!\n", 1);
 	exit(0);
 }
-void	ft_close(void* param)
+
+void	ft_close(void *param)
 {
-	t_cube *cube;
+	t_cube	*cube;
 
 	cube = (t_cube *)param;
-	printf("here\n");
-	ft_free(cube->map, cube->player, cube->ray);
-	ft_free(cube->texture->we, cube->texture, NULL);
+	ft_free(cube->map, cube->player);
+	ft_free(cube->texture->we, cube->texture);
+	ft_free(cube->ray, NULL);
 	ft_putstr_fd("closed!\n", 1);
 	exit(0);
 }
 
-void	keyPress(mlx_key_data_t keydata, void *param)
+void	key_press(mlx_key_data_t keydata, void *param)
 {
-	printf("%d\n", keydata.key);
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape((t_cube *)param);
 	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
@@ -53,7 +65,5 @@ void	keyPress(mlx_key_data_t keydata, void *param)
 	else if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
 		((t_cube *)(param))->player->moveLeft = true;
 	else
-		checkRelease(keydata, param);
+		check_release(keydata, param);
 }
-
-

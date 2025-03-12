@@ -2,8 +2,6 @@
 
 void	initStartingValues(t_cube *cube)
 {
-	cube->player->x = WIDTH/2;
-	cube->player->y = HEIGHT/2;
 	cube->player->degree = 90;
 	cube->player->fov = 60;
 	cube->player->moveFront = 0;
@@ -28,7 +26,6 @@ void	*ft_malloc(unsigned long size)
 
 void	allocations(t_cube *cube)
 {
-	cube->map = (t_map *)ft_malloc(sizeof(t_map));
 	cube->player = (t_player *)ft_malloc(sizeof(t_player));
 	cube->ray = (t_ray *)ft_malloc(sizeof(t_ray) * WIDTH);
 	cube->texture = (t_texture *)ft_malloc(sizeof(t_texture));
@@ -37,13 +34,13 @@ void	allocations(t_cube *cube)
 
 void	setRayDirection(t_cube *cube, int colom)
 {
-	cube->ray[colom].facingDown = cube->ray[colom].rayAngle > 0 && cube->ray[colom].rayAngle < M_PI;
+	cube->ray[colom].facingDown = cube->ray[colom].ray_angle > 0 && cube->ray[colom].ray_angle < M_PI;
 	cube->ray[colom].facingUp = !cube->ray[colom].facingDown;
-	cube->ray[colom].facingRight = cube->ray[colom].rayAngle < (M_PI/2) || cube->ray[colom].rayAngle > (3*M_PI)/2;
+	cube->ray[colom].facingRight = cube->ray[colom].ray_angle < (M_PI/2) || cube->ray[colom].ray_angle > (3*M_PI)/2;
 	cube->ray[colom].facingLeft = !cube->ray[colom].facingRight;
 }
 
-void ft_free(void *ptr, void *ptr2, void *ptr3)
+void ft_free(void *ptr, void *ptr2)
 {
     if (ptr)
 	{
@@ -55,9 +52,4 @@ void ft_free(void *ptr, void *ptr2, void *ptr3)
         free(ptr2);
         ptr2 = NULL;
     }
-	if (ptr3)
-	{
-		free(ptr3);
-        ptr3 = NULL;
-	}
 }

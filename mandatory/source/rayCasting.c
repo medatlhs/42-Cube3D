@@ -1,32 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rayCasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 16:35:27 by moait-la          #+#    #+#             */
+/*   Updated: 2025/03/12 16:46:24 by moait-la         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cube.h"
 
-void	initRayData(t_cube *cube, float rayAngle, int colom)
+void	init_ray_data(t_cube *cube, float rayAngle, int colom)
 {
-	cube->ray[colom].horizHitP = (t_point *)ft_malloc(sizeof(t_point));
-	cube->ray[colom].vertiHitP = (t_point *)ft_malloc(sizeof(t_point));
-	cube->ray[colom].rayAngle = rayAngle;
-	cube->ray[colom].closestHit = UNKNOWN;
+	cube->ray[colom].horiz_hitp = (t_point *)ft_malloc(sizeof(t_point));
+	cube->ray[colom].verti_hitp = (t_point *)ft_malloc(sizeof(t_point));
+	cube->ray[colom].ray_angle = rayAngle;
+	cube->ray[colom].closest_hit = UNKNOWN;
 }
 
-void	castAllRays(t_cube *cube)
+void	cast_all_rays(t_cube *cube)
 {
-	float	firstRayAngleR;
-	float	angleIncR;
+	float	first_ray_ang;
+	float	angle_inc;
 	int		colom;
 
-	firstRayAngleR = (cube->player->degree - (cube->player->fov/2)) * (M_PI / (float)180);
-	// firstRayAngleR = normalize(firstRayAngleR);
-	angleIncR = (cube->player->fov * M_PI/180) / (float)WIDTH;
+	first_ray_ang = (cube->player->degree - (cube->player->fov / 2));
+	first_ray_ang = first_ray_ang * (M_PI / (float)180);
+	angle_inc = (cube->player->fov * (M_PI / 180)) / (float)WIDTH;
 	colom = -1;
 	while (++colom < WIDTH)
 	{
-		firstRayAngleR = normalize(firstRayAngleR);
-		initRayData(cube, firstRayAngleR, colom);
+		first_ray_ang = normalize(first_ray_ang);
+		init_ray_data(cube, first_ray_ang, colom);
 		setRayDirection(cube, colom);
-		getHorizInter(cube, colom);
-		getVertInter(cube, colom);
+		get_horiz_inter(cube, colom);
+		get_verti_inter(cube, colom);
 		getClosestHit(cube, colom);
-		firstRayAngleR += angleIncR;
-		// ft_free(cube->ray[colom].horizHitP, cube->ray[colom].vertiHitP, );
+		first_ray_ang += angle_inc;
 	}
 }

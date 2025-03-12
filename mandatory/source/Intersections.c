@@ -1,138 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intersections.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/12 15:37:44 by moait-la          #+#    #+#             */
+/*   Updated: 2025/03/12 16:42:56 by moait-la         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cube.h"
 
-void	checkInter_H(t_cube *cube, float Xnearest, float Ynearest, float xstep, float ystep, int colom)
+void	check_horiz_inter(t_cube *cube, float xstep, float ystep, int colom)
 {
-	while (Xnearest > 0 && Ynearest > 0 && Xnearest < WIDTH && Ynearest < HEIGHT)
+	float	x_nearest;
+	float	y_nearest;
+
+	x_nearest = cube->ray[colom].x_nearest;
+	y_nearest = cube->ray[colom].y_nearest;
+	while (x_nearest > 0 && y_nearest > 0
+		&& x_nearest < WIDTH && y_nearest < HEIGHT)
 	{
 		// getPixel => -1 for up 1 for down
-		if (!wallCheck(cube, Xnearest, Ynearest + getPixel(cube, colom, true)))
+		if (!wall_check(cube, x_nearest, y_nearest
+				+ getPixel(cube, colom, true)))
 			break ;
-		Xnearest += xstep;
-		Ynearest += ystep;
+		x_nearest += xstep;
+		y_nearest += ystep;
 	}
-	cube->ray[colom].horizHitP->x = Xnearest;
-	cube->ray[colom].horizHitP->y = Ynearest;
+	cube->ray[colom].horiz_hitp->x = x_nearest;
+	cube->ray[colom].horiz_hitp->y = y_nearest;
 }
 
-void	getHorizInter(t_cube *cube, int colom)
+void	get_horiz_inter(t_cube *cube, int colom)
 {
-    float   Xnearest;
-    float   Ynearest;
+	float	xstep;
+	float	ystep;
 
-	Ynearest = floor(cube->player->y / CELL_SIZE) * CELL_SIZE;
+	cube->ray[colom].y_nearest = floor(cube->player->y / CELL_SIZE) * CELL_SIZE;
 	if (cube->ray[colom].facingDown == true)
-		Ynearest += CELL_SIZE;
-	Xnearest = cube->player->x + (Ynearest - cube->player->y) / (float)(tan(cube->ray[colom].rayAngle));
-
-	float	xstep, ystep;
+		cube->ray[colom].y_nearest += CELL_SIZE;
+	cube->ray[colom].x_nearest = cube->player->x
+		+ (cube->ray[colom].y_nearest - cube->player->y)
+		/ (float)(tan(cube->ray[colom].ray_angle));
 	ystep = CELL_SIZE;
 	if (cube->ray[colom].facingUp == true)
 		ystep *= -1;
-	xstep = ystep /(float)(tan(cube->ray[colom].rayAngle));
+	xstep = ystep / (float)(tan(cube->ray[colom].ray_angle));
 	if (cube->ray[colom].facingLeft && xstep > 0)
 		xstep *= -1;
 	if (cube->ray[colom].facingRight && xstep < 0)
 		xstep *= -1;
-
-	checkInter_H(cube, Xnearest, Ynearest, xstep, ystep, colom);
+	check_horiz_inter(cube, xstep, ystep, colom);
 }
 
-void	checkInter_V(t_cube *cube, float Xnearest, float Ynearest, float xstep, float ystep, int colom)
+void	check_verti_inter(t_cube *cube, float xstep, float ystep, int colom)
 {
-	while (Xnearest > 0 && Ynearest > 0 && Xnearest < WIDTH && Ynearest < HEIGHT)
+	float	y_nearest;
+	float	x_nearest;
+
+	x_nearest = cube->ray[colom].x_nearest;
+	y_nearest = cube->ray[colom].y_nearest;
+	while (x_nearest > 0 && y_nearest > 0
+		&& x_nearest < WIDTH && y_nearest < HEIGHT)
 	{
-		if (!wallCheck(cube, Xnearest + getPixel(cube, colom, false), Ynearest))
+		if (!wall_check(cube, x_nearest
+				+ getPixel(cube, colom, false), y_nearest))
 			break ;
-		Xnearest += xstep;
-		Ynearest += ystep;
+		x_nearest += xstep;
+		y_nearest += ystep;
 	}
-	cube->ray[colom].vertiHitP->x = Xnearest;
-	cube->ray[colom].vertiHitP->y = Ynearest;
+	cube->ray[colom].verti_hitp->x = x_nearest;
+	cube->ray[colom].verti_hitp->y = y_nearest;
 }
 
-void getVertInter(t_cube *cube, int colom)
+void	get_verti_inter(t_cube *cube, int colom)
 {
-	float	Xnearest;
-    float   Ynearest;
+	float	xstep;
+	float	ystep;
 
-    Xnearest = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
+	cube->ray[colom].x_nearest = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
 	if (cube->ray[colom].facingRight)
-    	Xnearest += CELL_SIZE;
-	Ynearest = cube->player->y + (Xnearest - cube->player->x) * (tan(cube->ray[colom].rayAngle));
-
-	float xstep, ystep;
+		cube->ray[colom].x_nearest += CELL_SIZE;
+	cube->ray[colom].y_nearest = cube->player->y
+		+ (cube->ray[colom].x_nearest - cube->player->x)
+		* (tan(cube->ray[colom].ray_angle));
 	xstep = CELL_SIZE;
 	if (cube->ray[colom].facingLeft == true)
 		xstep *= -1;
-	ystep = xstep * (tan(cube->ray[colom].rayAngle));
+	ystep = xstep * (tan(cube->ray[colom].ray_angle));
 	if (cube->ray[colom].facingUp && ystep > 0)
 		ystep *= -1;
 	if (cube->ray[colom].facingDown && ystep < 0)
 		ystep *= -1;
-
-	checkInter_V(cube, Xnearest, Ynearest, xstep, ystep, colom);
+	check_verti_inter(cube, xstep, ystep, colom);
 }
-
-// void	getHorizInter(t_cube *cube, int colom)
-// {
-// 	cube->ray[colom].yInter = floor(cube->player->y / CELL_SIZE) * CELL_SIZE;
-// 	if (cube->ray[colom].facingDown == true)
-// 		cube->ray[colom].yInter += CELL_SIZE;
-// 	cube->ray[colom].xInter = cube->player->x + (cube->ray[colom].yInter - cube->player->y) / (float)(tan(cube->ray[colom].rayAngle));
-
-// 	float	xstep, ystep;
-// 	ystep = CELL_SIZE;
-// 	if (cube->ray[colom].facingUp == true)
-// 		ystep *= -1;
-// 	xstep = ystep /(float)(tan(cube->ray[colom].rayAngle));
-// 	if (cube->ray[colom].facingLeft && xstep > 0)
-// 		xstep *= -1;
-// 	if (cube->ray[colom].facingRight && xstep < 0)
-// 		xstep *= -1;
-
-// 	float	posX, posY;
-// 	posX = cube->ray[colom].xInter;
-// 	posY = cube->ray[colom].yInter;
-// 	while (posX > 0 && posY > 0 && posX < WIDTH && posY < HEIGHT)
-// 	{
-// 		// getPixel => -1 for up 1 for down
-// 		if (!wallCheck(cube, posX, posY + getPixel(cube, colom, true)))
-// 			break ;
-// 		posX += xstep;
-// 		posY += ystep;
-// 	}
-
-// 	cube->ray[colom].horizHitP->y = posY;
-// 	cube->ray[colom].horizHitP->x = posX;
-// }
-
-// void getVertInter(t_cube *cube, int colom)
-// {
-//     cube->ray[colom].xInter = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
-// 	if (cube->ray[colom].facingRight)
-//     	cube->ray[colom].xInter += CELL_SIZE;
-// 	cube->ray[colom].yInter = cube->player->y + (cube->ray[colom].xInter - cube->player->x) * (tan(cube->ray[colom].rayAngle));
-
-// 	float xstep, ystep;
-// 	xstep = CELL_SIZE;
-// 	if (cube->ray[colom].facingLeft == true)
-// 		xstep *= -1;
-// 	ystep = xstep * (tan(cube->ray[colom].rayAngle));
-// 	if (cube->ray[colom].facingUp && ystep > 0)
-// 		ystep *= -1;
-// 	if (cube->ray[colom].facingDown && ystep < 0)
-// 		ystep *= -1;
-
-// 	float posX, posY;
-// 	posX = cube->ray[colom].xInter;
-// 	posY = cube->ray[colom].yInter;
-// 	while (posX > 0 && posY > 0 && posX < WIDTH && posY < HEIGHT)
-// 	{
-// 		if (!wallCheck(cube, posX + getPixel(cube, colom, false), posY))
-// 			break ;
-// 		posX += xstep;
-// 		posY += ystep;
-// 	}
-// 	cube->ray[colom].vertiHitP->x = posX;
-// 	cube->ray[colom].vertiHitP->y = posY;
-// }

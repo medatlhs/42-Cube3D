@@ -1,6 +1,6 @@
 #include "../include/cube.h"
 
-void	renderCeilling(t_cube cube, int x, int wallTopPixel)
+void	render_ceilling(t_cube cube, int x, int wallTopPixel)
 {
 	int	k;
 
@@ -9,7 +9,7 @@ void	renderCeilling(t_cube cube, int x, int wallTopPixel)
 		myPixelPut(&cube, x, k, getColor(50, 50, 50, 255));
 }
 
-void	renderFloor(t_cube cube, int x, int wallBottomPixel) 
+void	render_floor(t_cube cube, int x, int wallBottomPixel) 
 {
 	while (++wallBottomPixel < HEIGHT)
 	{
@@ -20,7 +20,7 @@ void	renderFloor(t_cube cube, int x, int wallBottomPixel)
 	}
 }
 
-void	renderStripe(t_cube cube, int wallHeight, int colom, int topPixel, int BottomPixel)
+void	render_stripe(t_cube cube, int wallHeight, int colom, int topPixel, int BottomPixel)
 {
     int 		k;
 	int			pixelPos;
@@ -35,14 +35,12 @@ void	renderStripe(t_cube cube, int wallHeight, int colom, int topPixel, int Bott
     {
 		textureY = getTextureY(cube.texture->we, &cube, k, wallHeight);
 		pixelPos = (textureY * cube.texture->we->width) + textureX;
-		// printf("before: %d\n", texturePixels[pixelPos]);
-		// printf("after : %d\n", reverse_bytes(texturePixels[pixelPos]));
 		myPixelPut(&cube, colom, k, reverse_bytes(texturePixels[pixelPos]));
 		k++;
     }
 }
 
-void    render3Dscene(t_cube cube)
+void    render3d_scene(t_cube cube)
 {
 	int		wallHeight;
 	int		wallTopPixel;
@@ -59,9 +57,9 @@ void    render3Dscene(t_cube cube)
             wallTopPixel = 0;
     	if (wallBottomPixel >= HEIGHT)
         	wallBottomPixel = HEIGHT - 1;
-		renderStripe(cube, wallHeight, colom, wallTopPixel, wallBottomPixel);
-		renderCeilling(cube, colom, wallTopPixel);
-		renderFloor(cube, colom, wallBottomPixel);
+		render_stripe(cube, wallHeight, colom, wallTopPixel, wallBottomPixel);
+		render_ceilling(cube, colom, wallTopPixel);
+		render_floor(cube, colom, wallBottomPixel);
     }
 }
 
