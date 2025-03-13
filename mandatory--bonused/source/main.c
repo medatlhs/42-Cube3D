@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:13:07 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 13:07:34 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:41:52 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,12 +127,10 @@ void	*handle_cursor(double xpos, double ypos, void* param)
 	cube = (t_cube *)param;
 	cube->player->new_mouse_x = xpos;
 	cube->player->mouse_moved = true;
-	// deltax = xpos - cube->player->last_mouse_x;
-	// cube->player->degree += deltax * 0.003; 
-	// cube->player->new_mouse_x = xpos;
 	return (NULL);
 }
 
+	
 int	main(void)
 {
 	t_cube	cube;

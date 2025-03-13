@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:31:40 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 13:19:04 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 17:42:58 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	update_position(t_cube *cube)
 {
+	static int last_mouse_x = -1;
+	
 	if (cube->player->mouse_moved == true)
 	{
 		int deltax = cube->player->last_mouse_x - cube->player->new_mouse_x;
-		cube->player->degree += deltax * 0.005;
+		cube->player->degree -= deltax * 0.05;
 		cube->player->last_mouse_x = cube->player->new_mouse_x;
 		cube->player->mouse_moved = false;
-		mlx_set_mouse_pos(cube->window, WIDTH / 2, HEIGHT / 2);
+		last_mouse_x = cube->player->new_mouse_x;
 	}
 	
 	if (cube->player->rotateRight == true)

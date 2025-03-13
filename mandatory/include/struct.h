@@ -75,6 +75,7 @@ typedef struct s_map
 	int		*C;
 	char	**textures;
 	char	**map;
+    t_texture   *texture;
 	char	testingMap[ROWS][COLOMS];
 	int		colum;
 	int		row;
@@ -88,10 +89,10 @@ typedef struct s_cube
 	t_texture   *texture;
     t_player    *player;
     t_ray       *ray;
-    long        lastFameUpdate;
-    bool        renderdBefore;
-    float       constRayAngle;
-    int         mybool;
+    // long        lastFameUpdate;
+    // bool        renderdBefore;
+    // float       constRayAngle;
+    // int         mybool;
 }	t_cube;
 
 #endif

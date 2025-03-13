@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:13:07 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:32:15 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 20:41:24 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,22 @@ void	render_frame(void	*param)
 	
 	free_all(cube);
 }
-
+void f()
+{
+	system("leaks cube");
+}
 int	main(void)
 {
 	t_cube	cube;
 	char	*path;
 
-	path = "/Users/moait-la/Desktop/42-Cube3D-chahlaoui/mandatory/parssing/test.cub";
+	// atexit(f);
+	path = "/Users/moait-la/Desktop/cuby/mandatory/parssing/test.cub";
 	if (!parsing_final(path, &cube))
 		return (1);
+	printf("%s\n", cube.map->textures[0]);
+	
+	
 	init_mlx(&cube);
 	allocations(&cube);
 	set_player_pos(&cube);
