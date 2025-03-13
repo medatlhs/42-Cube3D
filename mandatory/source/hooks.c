@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:34:32 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/12 15:36:16 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 09:10:00 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ void	ft_close(void *param)
 
 void	key_press(mlx_key_data_t keydata, void *param)
 {
-	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+	if (keydata.key == MLX_KEY_Y && keydata.action == MLX_PRESS)
+	{
+		((t_cube *)(param))->sprite->fired = true;
+		printf("here\n");
+	}
+	else if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		escape((t_cube *)param);
 	else if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
 		((t_cube *)(param))->player->moveFront = true;

@@ -33,7 +33,7 @@ typedef struct s_sprite
 {
     float           x;
     float           y;
-    bool            fire;
+    bool            fired;
     mlx_image_t     *images[SPRITES];
     mlx_texture_t   *spirites[SPRITES];
 } t_sprite;
