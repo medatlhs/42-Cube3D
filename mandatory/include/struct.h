@@ -75,7 +75,7 @@ typedef struct s_map
 	int		*C;
 	char	**textures;
 	char	**map;
-    t_texture   *texture;
+    
 	char	testingMap[ROWS][COLOMS];
 	int		colum;
 	int		row;

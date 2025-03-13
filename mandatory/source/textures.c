@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 20:47:58 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 20:58:53 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,23 @@
 
 void    load_textures(t_cube *cube)
 {
-    // cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/cuby/assets/textures/texture.png");
-	// if (!cube->texture->we)
-	// 	ft_error("walawalawalawalawala\n");
-	// return ;
-	printf("rrrrrrrrr :%s\n", cube->map->textures[0]);
-	// exit(1);
+    cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/cuby/assets/textures/texture.png");
+	if (!cube->texture->we)
+		ft_error("walawalawalawalawala\n");
+	return ;
+	printf("%s\n", cube->texture->textures[0]->path);
 	int	i;
-// NO 
 	i = -1;
 	while (cube->texture->textures[++i])
 	{
-		if (!ft_strncmp(cube->texture->textures[i], "NO", 2))
-			cube->texture->no = mlx_load_png(cube->map->textures[i]);
-		else if (!ft_strncmp(cube->texture->textures[i], "EA", 2))
-			cube->texture->ea = mlx_load_png(cube->map->textures[i]);
-		else if (!ft_strncmp(cube->texture->textures[i], "WE", 2))
-			cube->texture->we = mlx_load_png(cube->map->textures[i]);
-		else if (!ft_strncmp(cube->texture->textures[i], "SO", 2))
-			cube->texture->so = mlx_load_png(cube->map->textures[i]);
+		if (!ft_strncmp(cube->texture->textures[i]->key, "NO", 2))
+			cube->texture->no = mlx_load_png(cube->texture->textures[i]->path);
+		else if (!ft_strncmp(cube->texture->textures[i]->key, "EA", 2))
+			cube->texture->ea = mlx_load_png(cube->texture->textures[i]->path);
+		else if (!ft_strncmp(cube->texture->textures[i]->key, "WE", 2))
+			cube->texture->we = mlx_load_png(cube->texture->textures[i]->path);
+		else if (!ft_strncmp(cube->texture->textures[i]->key, "SO", 2))
+			cube->texture->so = mlx_load_png(cube->texture->textures[i]->path);
 	}
     if (!cube->texture->no || !cube->texture->ea || !cube->texture->we || !cube->texture->so)
 		ft_error("Error: failed to load textures");
