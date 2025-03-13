@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:35:27 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:18:04 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:46:24 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	cast_all_rays(t_cube *cube)
 	{
 		first_ray_ang = normalize(first_ray_ang);
 		init_ray_data(cube, first_ray_ang, colom);
-		set_ray_direction(cube, colom);
+		setRayDirection(cube, colom);
 		get_horiz_inter(cube, colom);
 		get_verti_inter(cube, colom);
-		get_closest_hit(cube, colom);
+		getClosestHit(cube, colom);
 		first_ray_ang += angle_inc;
 	}
 }

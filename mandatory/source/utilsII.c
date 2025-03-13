@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utilsII.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 16:11:10 by moait-la          #+#    #+#             */
+/*   Updated: 2025/03/13 16:47:15 by moait-la         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cube.h"
 
-uint32_t rgb_to_argb(int r, int g, int b)
-{     
-    uint32_t color;
+uint32_t	rgb_to_argb(int r, int g, int b)
+{
+	uint32_t	color;
 
 	color = 0;
-    color |= 0xFF << 24; 
-    color |= r << 16;
-    color |= g << 8;      
-    color |= b;
-    return (color);
+	color |= 0xFF << 24;
+	color |= r << 16;
+	color |= g << 8;
+	color |= b;
+	return (color);
 }
 
 uint32_t	reverse_bytes(uint32_t c)
@@ -24,35 +36,38 @@ uint32_t	reverse_bytes(uint32_t c)
 	return (b);
 }
 
-int	getColor(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
+int	get_color(uint32_t r, uint32_t g, uint32_t b, uint32_t a)
 {
 	return (r << 24 | g << 16 | b << 8 | a << 0);
 }
 
-void	myPixelPut(t_cube *cube, int x, int y, uint32_t color)
+void	my_pixel_put(t_cube *cube, int x, int y, uint32_t color)
 {
 	if (x > WIDTH || x < 0 || y > HEIGHT || y < 0)
 		return ;
 	mlx_put_pixel(cube->img, x, y, color);
 }
 
-void	getClosestHit(t_cube *cube, int colom)
+void	get_closest_hit(t_cube *cube, int colom)
 {
-	float	horizDist;
-	float	vertiDist;
+	float	hroiz_dis;
+	float	verti_dis;
+	float	fixed_dis;
+	float	angle_rad;
 
-	horizDist = sqrt(pow(cube->ray[colom].horiz_hitp->x - cube->player->x, 2) +
-		pow(cube->ray[colom].horiz_hitp->y - cube->player->y, 2));
-	vertiDist = sqrt(pow(cube->ray[colom].verti_hitp->x - cube->player->x, 2) +
-		pow(cube->ray[colom].verti_hitp->y - cube->player->y, 2));
-	if (horizDist < vertiDist)
+	hroiz_dis = sqrt(pow(cube->ray[colom].horiz_hitp->x - cube->player->x, 2)
+			+ pow(cube->ray[colom].horiz_hitp->y - cube->player->y, 2));
+	verti_dis = sqrt(pow(cube->ray[colom].verti_hitp->x - cube->player->x, 2)
+			+ pow(cube->ray[colom].verti_hitp->y - cube->player->y, 2));
+	angle_rad = cube->player->degree * (M_PI / 180);
+	fixed_dis = cos(cube->ray[colom].ray_angle - angle_rad);
+	if (hroiz_dis < verti_dis)
 	{
 		cube->ray[colom].closest_hit = HORIZONTAL;
-		cube->ray[colom].distance = horizDist * cos(cube->ray[colom].ray_angle -
-			(cube->player->degree * (M_PI/180)));
+		cube->ray[colom].distance = hroiz_dis * fixed_dis;
 		return ;
 	}
+	
 	cube->ray[colom].closest_hit = VERTICAL;
-	cube->ray[colom].distance = vertiDist * cos(cube->ray[colom].ray_angle -
-		(cube->player->degree * (M_PI/180)));
+	cube->ray[colom].distance = verti_dis * fixed_dis;
 }

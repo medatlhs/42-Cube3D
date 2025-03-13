@@ -27,6 +27,21 @@ typedef struct s_point
     float	y;
 }	t_point;
 
+typedef struct s_sprite
+{
+    float           x;
+    float           y;
+    bool            fired;
+    bool            loaded;
+
+    mlx_texture_t   *crosshair;
+    mlx_image_t     *crosshair_img;
+    bool            cross_loaded;
+
+    mlx_image_t     *images[SPRITES];
+    mlx_texture_t   *spirites[SPRITES];
+} t_sprite;
+
 typedef struct s_player
 {
     float       x;
@@ -34,6 +49,10 @@ typedef struct s_player
     float       degree;
     int         fov;
     int         speed;
+
+    int     last_mouse_x;
+    int     new_mouse_x;
+    bool    mouse_moved;
 
     float   rayInterX;
     float   rayInterY;
@@ -88,6 +107,7 @@ typedef struct s_cube
 	t_texture   *texture;
     t_player    *player;
     t_ray       *ray;
+    t_sprite    *sprite;
     long        lastFameUpdate;
     bool        renderdBefore;
     float       constRayAngle;

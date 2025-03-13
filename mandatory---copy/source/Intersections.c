@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:37:44 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:37:00 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/12 16:42:56 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_horiz_inter(t_cube *cube, float xstep, float ystep, int colom)
 	{
 		// getPixel => -1 for up 1 for down
 		if (!wall_check(cube, x_nearest, y_nearest
-				+ get_pixel(cube, colom, true)))
+				+ getPixel(cube, colom, true)))
 			break ;
 		x_nearest += xstep;
 		y_nearest += ystep;
@@ -66,7 +66,7 @@ void	check_verti_inter(t_cube *cube, float xstep, float ystep, int colom)
 		&& x_nearest < WIDTH && y_nearest < HEIGHT)
 	{
 		if (!wall_check(cube, x_nearest
-				+ get_pixel(cube, colom, false), y_nearest))
+				+ getPixel(cube, colom, false), y_nearest))
 			break ;
 		x_nearest += xstep;
 		y_nearest += ystep;

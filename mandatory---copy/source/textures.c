@@ -1,25 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   textures.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:05:01 by moait-la         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../include/cube.h"
 
-void    load_textures(t_cube *cube)
+void    loatTextures(t_cube *cube)
 {
-    cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/cuby/assets/textures/texture.png");
+    cube->texture->we = mlx_load_png("/Users/moait-la/Desktop/42-Cube3D-chahlaoui/assets/textures/texture.png");
 	if (!cube->texture->we)
 		ft_error("walawalawalawalawala\n");
 	return ;
-	printf("%s\n", cube->texture->textures[0]->path);
-	exit(1);
 	int	i;
 
 	i = -1;
@@ -38,7 +24,7 @@ void    load_textures(t_cube *cube)
 		ft_error("Error: failed to load textures");
 }
 
-mlx_texture_t *get_texture(t_texture texture, t_ray ray)
+mlx_texture_t *getTexture(t_texture texture, t_ray ray)
 {
 	if (ray.closest_hit == HORIZONTAL)
 	{
@@ -57,32 +43,30 @@ mlx_texture_t *get_texture(t_texture texture, t_ray ray)
 	return (NULL);
 }
 
-float	get_texture_x(t_cube data, int colom)
+float	getTextureX(t_cube data, int colom)
 {
-	float	textureX;
-	float	positionInWall;
-
+	float textureX;
 	if (data.ray[colom].closest_hit == HORIZONTAL)
 	{
-		positionInWall = fmodf(data.ray[colom].horiz_hitp->x ,(float)CELL_SIZE);
+		float positionInWall = fmodf(data.ray[colom].horiz_hitp->x ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
 	}
 	else if (data.ray[colom].closest_hit == VERTICAL)
 	{
-		positionInWall = fmodf(data.ray[colom].verti_hitp->y ,(float)CELL_SIZE);
+		float positionInWall = fmodf(data.ray[colom].verti_hitp->y ,(float)CELL_SIZE);
 		textureX = positionInWall * data.texture->we->width / (float)CELL_SIZE;
 	}
-	return (textureX);
+	return textureX;
 }
 
-int	get_texture_y(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
+int	getTextureY(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 {
-	float	step;
-	float	offset_y;
+	double	step;
+	double	offset_y;
 	int		wallTopPixel;
 
 	wallTopPixel = (cube->window->height / 2) - (wallHeight / 2);
-	step = (float)texture->height / wallHeight;
+	step = (double)texture->height / wallHeight;
 	offset_y = ((y - wallTopPixel) * step);
 	if (offset_y >= texture->height)
 		offset_y = texture->height - 1;
@@ -90,3 +74,4 @@ int	get_texture_y(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 		offset_y = 0;
 	return (offset_y);
 }
+

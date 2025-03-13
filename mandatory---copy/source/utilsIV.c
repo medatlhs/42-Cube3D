@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:09:18 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:32:27 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/13 10:29:45 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_error(char *errorMsj)
 	exit(1);
 }
 
-void	set_position(t_cube *cube, int row, int colom, char c)
+void	setPosition(t_cube *cube, int row, int colom, char c)
 {
 	cube->player->x = colom * CELL_SIZE;
 	cube->player->y = row * CELL_SIZE;
@@ -32,7 +32,7 @@ void	set_position(t_cube *cube, int row, int colom, char c)
 		cube->player->degree = 0;
 }
 
-void	set_player_pos(t_cube *cube)
+void	setPLayerPosition(t_cube *cube)
 {
 	int	i;
 	int	k;
@@ -46,13 +46,13 @@ void	set_player_pos(t_cube *cube)
 			if (cube->map->map[i][k] == 'N' || cube->map->map[i][k] == 'S'
 				|| cube->map->map[i][k] == 'E' || cube->map->map[i][k] == 'W')
 			{
-				set_position(cube, i, k, cube->map->map[i][k]);
+				setPosition(cube, i, k, cube->map->map[i][k]);
 			}
 		}
 	}
 }
 
-void	setup_hooks(t_cube *cube)
+void	setupHooks(t_cube *cube)
 {
 	mlx_key_hook(cube->window, key_press, cube);
 	mlx_close_hook(cube->window, ft_close, cube);
