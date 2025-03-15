@@ -73,10 +73,8 @@ typedef struct s_map
 {
 	int		*F;
 	int		*C;
-	char	**textures;
+	t_txture	*textur;
 	char	**map;
-    
-	char	testingMap[ROWS][COLOMS];
 	int		colum;
 	int		row;
 }			t_map;

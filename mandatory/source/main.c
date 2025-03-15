@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:13:07 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 20:41:24 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/15 13:53:34 by achahlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	main(void)
 	t_cube	cube;
 	char	*path;
 
-	// atexit(f);
-	path = "/Users/moait-la/Desktop/cuby/mandatory/parssing/test.cub";
+	atexit(f);
+	path = "/Users/achahlao/Desktop/cube_00_new/mandatory/parssing/test.cub";
+	printf("%s\n",path);
+	printf("=======>%d\n",parsing_final(path, &cube));
 	if (!parsing_final(path, &cube))
 		return (1);
-	printf("%s\n", cube.map->textures[0]);
-	
 	
 	init_mlx(&cube);
 	allocations(&cube);
