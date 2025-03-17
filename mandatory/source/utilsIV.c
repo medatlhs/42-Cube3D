@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:09:18 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:32:27 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:11:26 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	ft_error(char *errorMsj)
 
 void	set_position(t_cube *cube, int row, int colom, char c)
 {
-	cube->player->x = colom * CELL_SIZE;
-	cube->player->y = row * CELL_SIZE;
+	cube->player->x = (colom * CELL_SIZE) + (CELL_SIZE / 2);
+	cube->player->y = (row * CELL_SIZE) + (CELL_SIZE / 2);
 	if (c == 'N')
 		cube->player->degree = 270;
 	else if (c == 'W')

@@ -6,7 +6,7 @@
 /*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:24:48 by achahlao          #+#    #+#             */
-/*   Updated: 2025/02/26 10:45:03 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/11 20:50:49 by achahlao         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <limits.h>
-// #include "../../../libft/libft.h"
 
 char	*ft_strjoin1(char *s1, char *s2);
 int		ft_strchr1(char *s, int c);

@@ -58,7 +58,6 @@ void	init_mlx(t_cube *cube);
 void	render_frame(void *param);
 uint32_t reverse_bytes(uint32_t c);
 uint32_t rgb_to_argb(int r, int g, int b);
-mlx_texture_t *get_texture(t_texture texture, t_ray ray);
-
+mlx_texture_t *get_texture(t_cube cube, t_ray ray);
 int parsing_final(char *file, t_cube *cub);
 #endif

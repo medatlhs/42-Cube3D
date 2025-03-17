@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:11:10 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:47:15 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:31:59 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ void	get_closest_hit(t_cube *cube, int colom)
 		cube->ray[colom].distance = hroiz_dis * fixed_dis;
 		return ;
 	}
-	
 	cube->ray[colom].closest_hit = VERTICAL;
 	cube->ray[colom].distance = verti_dis * fixed_dis;
 }

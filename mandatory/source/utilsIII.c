@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:27:05 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:29:16 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:31:17 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	get_pixel(t_cube *cube, int colom, bool flag)
 {
 	if (flag)
 	{
-		if (cube->ray[colom].ray_angle > M_PI && cube->ray[colom].ray_angle < 2 * M_PI)
+		if (cube->ray[colom].ray_angle > M_PI
+			&& cube->ray[colom].ray_angle < 2 * M_PI)
 			return (-1);
 	}
 	else
-		if (cube->ray[colom].ray_angle > M_PI / 2 && cube->ray[colom].ray_angle < 3 * (M_PI / 2))
+		if (cube->ray[colom].ray_angle > M_PI / 2
+			&& cube->ray[colom].ray_angle < 3 * (M_PI / 2))
 			return (-1);
 	return (0);
 }

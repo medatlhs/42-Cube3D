@@ -95,7 +95,7 @@ void trim_new_lines(char **map, int index)
 		index++;
 	}
 }
-static int contains_only_whitespace(char *str)
+int contains_only_whitespace(char *str)
 {
 	size_t i = 0;
 
