@@ -6,22 +6,26 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:19:33 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/18 17:21:17 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 18:08:30 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE_H
 # define CUBE_H
 
-# include "./macros.h"
 # include "./struct.h"
 # include "../../MLX42/include/MLX42.h"
 # include "../../libft/libft.h"
-# include "../parssing/get_nextline_/get_next_line.h"
 # include <math.h>
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include "../parssing/get_nextline_/get_next_line.h"
+# define WIDTH  1700
+# define HEIGHT  1000
+# define ER "map ne pas ferme \n"
+# define NUM_RAYS WIDTH
+# define CELL_SIZE 64
 
 void	ft_error(char *errorMsj);
 void	*ft_malloc(unsigned long size);
@@ -95,8 +99,8 @@ void	afficher_tableau(char **str);
 void	affiche_color(int *tab, int size);
 void	print_textures(t_txture *textures);
 
-uint32_t		reverse_bytes(uint32_t c);
-uint32_t		rgb_to_argb(int r, int g, int b);
+unsigned int	reverse_bytes(uint32_t c);
+unsigned int	rgb_to_argb(int r, int g, int b);
 mlx_texture_t	*get_texture(t_cube cube, t_ray ray);
 
 #endif

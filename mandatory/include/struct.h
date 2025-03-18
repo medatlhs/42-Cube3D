@@ -1,10 +1,20 @@
-#ifndef STRUCT_H
-#define STRUCT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/18 18:08:36 by moait-la          #+#    #+#             */
+/*   Updated: 2025/03/18 18:09:23 by moait-la         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "./cube.h"
-#include "../../MLX42/include/MLX42.h"
-#include "macros.h"
-#include <stdbool.h>
+#ifndef STRUCT_H
+# define STRUCT_H
+# include "./cube.h"
+# include "../../MLX42/include/MLX42.h"
+# include <stdbool.h>
 
 typedef struct s_txture
 {
@@ -86,10 +96,6 @@ typedef struct s_cube
 	t_texture   *texture;
     t_player    *player;
     t_ray       *ray;
-    // long        lastFameUpdate;
-    // bool        renderdBefore;
-    // float       constRayAngle;
-    // int         mybool;
 }	t_cube;
 
 #endif
