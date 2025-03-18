@@ -3,17 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsg.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 04:19:17 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/12 15:35:02 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:27:59 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
-#include "get_nextline_/get_next_line.h"
 #include "../include/cube.h"
-#include "../include/struct.h"
 
 static int	get_size(char *file)
 {

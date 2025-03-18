@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_wall.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:05:33 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/15 15:12:11 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:27:55 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
-#include "get_nextline_/get_next_line.h"
-#include "../../libft/libft.h"
+#include "../include/cube.h"
 
 int	is_character(char c)
 {

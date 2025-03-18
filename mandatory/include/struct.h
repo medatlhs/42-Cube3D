@@ -18,7 +18,6 @@ typedef struct s_texture
     mlx_texture_t	*ea;
     mlx_texture_t	*we;
     mlx_texture_t	*so;
-    t_txture        *textures[4];
 }	t_texture;
 
 typedef struct s_point
@@ -71,12 +70,12 @@ typedef struct s_ray
 
 typedef struct s_map
 {
-	int		*F;
-	int		*C;
+	int		    *F;
+	int		    *C;
+	int		    colum;
+	int		    row;
+	char	    **map;
 	t_txture	*textur;
-	char	**map;
-	int		colum;
-	int		row;
 }			t_map;
 
 typedef struct s_cube

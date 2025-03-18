@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_00.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:51:08 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/12 15:48:36 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:28:07 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
-#include "get_nextline_/get_next_line.h"
-#include "../../libft/libft.h"
+#include "../include/cube.h"
 
 int	ft_prsg_atoi(const char *str)
 {

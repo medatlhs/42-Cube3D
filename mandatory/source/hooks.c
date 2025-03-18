@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:34:32 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 10:28:40 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:09:15 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,20 @@ void	check_release(mlx_key_data_t keydata, void *param)
 		((t_cube *)(param))->player->moveLeft = false;
 }
 
+void	ft_clean(t_cube *cube)
+{
+	int	i;
+
+	i = -1;
+	while (++i < cube->map->row)
+		free(cube->map->map[i]);
+}
+
 void	escape(t_cube *cube)
 {
-	ft_free(cube->map, cube->player);
-	ft_free(cube->texture, cube->ray);
+	ft_free(NULL, cube->player);
+	ft_free(NULL, cube->ray);
+	ft_clean(cube);
 	ft_putstr_fd("closed!\n", 1);
 	exit(0);
 }
@@ -42,8 +52,7 @@ void	ft_close(void *param)
 
 	cube = (t_cube *)param;
 	ft_free(cube->map, cube->player);
-	ft_free(cube->texture->we, cube->texture);
-	ft_free(cube->ray, NULL);
+	ft_free(cube->ray, cube->texture);
 	ft_putstr_fd("closed!\n", 1);
 	exit(0);
 }

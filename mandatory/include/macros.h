@@ -6,7 +6,7 @@
 
 # define COLOMS  15
 # define ROWS  15
-
+# define ER "map ne pas ferme \n"
 # define EPSILON 0.0000001                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 
 # define NUM_RAYS WIDTH

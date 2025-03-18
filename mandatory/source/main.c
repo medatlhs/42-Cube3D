@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:13:07 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/17 17:21:04 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:08:11 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(void)
 	t_cube	cube;
 	char	*path;
 
-	atexit(f);
-	path = "/Users/moait-la/Downloads/42-Cube3D-chahlaoui/mandatory/parssing/test.cub";
+	// atexit(f);
+	path = "/Users/moait-la/Downloads/last/assets/map.cub";
 	printf("%s\n",path);
 	if (!parsing_final(path, &cube))
 		return (1);

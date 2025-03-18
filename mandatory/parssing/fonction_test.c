@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   fonction_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:49:20 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/15 14:50:11 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:27:55 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
+#include "../include/cube.h"
 
 void	afficher_tableau(char **str)
 {

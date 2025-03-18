@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parssing_final.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:30:24 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/15 15:19:36 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:28:03 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
+#include "../include/cube.h"
 
 static char	**make_map_rectangle(char **map)
 {

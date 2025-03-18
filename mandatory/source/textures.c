@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/17 17:35:58 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:11:27 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ float	get_texture_x(t_cube data, int colom)
 
 	if (data.ray[colom].closest_hit == HORIZONTAL)
 		pos_in_wall = fmodf(data.ray[colom].horiz_hitp->x, (float)CELL_SIZE);
-	else if (data.ray[colom].closest_hit == VERTICAL)
+	else
 		pos_in_wall = fmodf(data.ray[colom].verti_hitp->y, (float)CELL_SIZE);
 	texture_x = pos_in_wall * data.texture->we->width / (float)CELL_SIZE;
 	return (texture_x);

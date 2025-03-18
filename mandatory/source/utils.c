@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:07:12 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/17 17:50:32 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:35:23 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	init_startings(t_cube *cube)
 {
 	cube->player->fov = 60;
-	cube->player->speed = 10;
+	cube->player->speed = 30;
 	cube->player->rotateLeft = 0;
 	cube->player->moveRight = 0;
 	cube->player->moveBack = 0;

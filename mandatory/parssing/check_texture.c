@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 18:45:01 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/15 15:20:00 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:29:19 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parssing.h"
-#include "get_nextline_/get_next_line.h"
+#include "../include/cube.h"
 
 static int	get_index_texture(char *str)
 {
@@ -68,8 +67,8 @@ int	check_texture(char **map)
 		index_texture = get_index_texture(map[i]);
 		if (index_texture >= 0)
 			count_textures[index_texture]++;
-		else if (!(strncmp(map[i], "F ", 2) == 0 \
-			|| strncmp(map[i], "C ", 2) == 0 || check_espace(map[i]) == 1))
+		else if (!(ft_strncmp(map[i], "F ", 2) == 0 \
+			|| ft_strncmp(map[i], "C ", 2) == 0 || check_espace(map[i]) == 1))
 			break ;
 	}
 	return (check_count(count_textures));
