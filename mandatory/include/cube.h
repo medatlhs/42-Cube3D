@@ -16,19 +16,19 @@
 # include "./struct.h"
 # include "../../MLX42/include/MLX42.h"
 # include "../../libft/libft.h"
+# include "../parssing/get_nextline_/get_next_line.h"
 # include <math.h>
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdbool.h>
-# include "../parssing/get_nextline_/get_next_line.h"
 # define WIDTH  1700
 # define HEIGHT  1000
 # define ER "map ne pas ferme \n" 
 # define NUM_RAYS WIDTH
 # define CELL_SIZE 64
 
-unsigned int	abgr_to_rgba(uint32_t c);
-mlx_texture_t	*get_texture(t_cube cube, t_ray ray);
+unsigned int	abgr_to_rgba(uint32_t c); 
+mlx_texture_t	*get_texture(t_cube cube, t_ray ray); 
 void			ft_error(char *errorMsj);
 void			*ft_malloc(unsigned long size);
 void			my_pixel_put(t_cube *cube, int x, int y, uint32_t color);

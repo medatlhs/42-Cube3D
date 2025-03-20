@@ -13,8 +13,9 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
+
 # include "./cube.h"
-# include "../../MLX42/include/MLX42.h"
+# include "../../MLX42/include/MLX42.h" 
 # include <stdbool.h>
 
 typedef struct s_txture
@@ -26,9 +27,9 @@ typedef struct s_txture
 typedef struct s_texture
 {
 	mlx_texture_t	*no;
-	mlx_texture_t	*ea;
+	mlx_texture_t	*ea; 
 	mlx_texture_t	*we;
-	mlx_texture_t	*so;
+	mlx_texture_t	*so; 
 }	t_texture;
 
 typedef struct s_point

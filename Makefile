@@ -1,11 +1,9 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
-# Bibliothèques externes
 MLX42 = -L./MLX42/lib -lmlx42
 GLFW  = -L$(HOME)/.brew/Cellar/glfw/3.4/lib -lglfw
 
-# Libft
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 LIBFT_SRC = \
@@ -84,9 +82,13 @@ HEADERS = \
 	mandatory/parssing/get_nextline_/get_next_line.h
 
 OBJ = $(SRCS:.c=.o)
+
 LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
 
 NAME = cube
+
+%.o: %.c $(HEADERS)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -98,10 +100,10 @@ $(NAME): $(LIBFT) $(HEADERS) $(OBJ)
 
 clean:
 	rm -rf $(OBJ) $(LIBFT_OBJ)
+
 fclean: clean
 	rm -rf $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
-

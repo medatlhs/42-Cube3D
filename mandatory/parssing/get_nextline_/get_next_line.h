@@ -19,7 +19,6 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
 # include <limits.h>
 
@@ -29,7 +28,7 @@ int		ft_strchr1(char *s, int c);
 char	*ft_read_file(int fd, char *result);
 char	*ft_line_line(char *ch);
 char	*ft_next_line(char *str);
-char	*get_next_line(int fd);
+char	*get_next_line(int fd); 
 char	*ft_strdup1(char *str);
 char	*ft_free_null(char *s1, char *s2);
 
