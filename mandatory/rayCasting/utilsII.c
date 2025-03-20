@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:11:10 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/19 02:41:36 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:47:37 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,11 @@ void	get_closest_hit(t_cube *cube, int colom)
 	if (hroiz_dis < verti_dis)
 	{
 		cube->ray[colom].closest_hit = HORIZONTAL;
-		cube->ray[colom].distance = hroiz_dis * cos(cube->ray[colom].ray_angle - angle_rad);
+		cube->ray[colom].distance = hroiz_dis
+			* cos(cube->ray[colom].ray_angle - angle_rad);
 		return ;
 	}
 	cube->ray[colom].closest_hit = VERTICAL;
-	cube->ray[colom].distance = verti_dis * cos(cube->ray[colom].ray_angle - angle_rad);
+	cube->ray[colom].distance = verti_dis
+		* cos(cube->ray[colom].ray_angle - angle_rad);
 }

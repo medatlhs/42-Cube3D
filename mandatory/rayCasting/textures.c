@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/19 03:20:16 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 02:22:47 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,5 @@ int	get_texture_y(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 	wall_top_px = (cube->window->height / 2) - (wallHeight / 2);
 	step = (float)texture->height / wallHeight;
 	texture_y = (y - wall_top_px) * step;
-	if (texture_y >= texture->height)
-		texture_y = texture->height - 1;
-	if (texture_y < 0)
-		texture_y = 0;
 	return (texture_y);
 }

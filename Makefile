@@ -6,7 +6,6 @@ GLFW  = -L$(HOME)/.brew/Cellar/glfw/3.4/lib -lglfw
 LIBFT = ./libft/libft.a
 LIBFT_SRC = $(shell find ./libft -name '*.c')
 SRCS = $(shell find ./mandatory/rayCasting -name '*.c') \
-	   $(shell find ./get_next_line -name '*.c') \
        $(shell find ./mandatory/parssing -name '*.c')
 HEADERS = $(shell find ./mandatory/include -name '*.h')
 
