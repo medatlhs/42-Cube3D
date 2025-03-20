@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 04:19:17 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/18 18:04:39 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:39:32 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ char	**get_map(char *file)
 	int		fd;
 	int		i;
 
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		return (perror("open"), exit(1), NULL);
 	size = get_size(file);
 	if (!size)
 		return (ft_putstr_fd("Error :\n\t==>empty file", 2), NULL);
 	map = malloc(sizeof(char *) * (size + 1));
 	if (!map)
 		return (perror("malloc"), NULL);
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		return (perror("open"), NULL);
 	(1) && (line = get_next_line(fd), i = 0);
 	while (line)
 	{

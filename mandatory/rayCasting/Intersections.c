@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 15:37:44 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/20 00:15:48 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:05:25 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ void	get_horiz_inter(t_cube *cube, int colom)
 	float	ystep;
 
 	cube->ray[colom].y_nearest = floor(cube->player->y / CELL_SIZE) * CELL_SIZE;
-	if (cube->ray[colom].facingDown == true)
+	if (cube->ray[colom].facing_down == true)
 		cube->ray[colom].y_nearest += CELL_SIZE;
 	cube->ray[colom].x_nearest = cube->player->x
 		+ (cube->ray[colom].y_nearest - cube->player->y)
 		/ (float)(tan(cube->ray[colom].ray_angle));
 	ystep = CELL_SIZE;
-	if (cube->ray[colom].facingUp == true)
+	if (cube->ray[colom].facing_up == true)
 		ystep *= -1;
 	xstep = ystep / (float)(tan(cube->ray[colom].ray_angle));
-	if (cube->ray[colom].facingLeft && xstep > 0)
+	if (cube->ray[colom].facing_left && xstep > 0)
 		xstep *= -1;
-	if (cube->ray[colom].facingRight && xstep < 0)
+	if (cube->ray[colom].facing_right && xstep < 0)
 		xstep *= -1;
 	check_horiz_inter(cube, xstep, ystep, colom);
 }
@@ -78,18 +78,18 @@ void	get_verti_inter(t_cube *cube, int colom)
 	float	ystep;
 
 	cube->ray[colom].x_nearest = floor(cube->player->x / CELL_SIZE) * CELL_SIZE;
-	if (cube->ray[colom].facingRight)
+	if (cube->ray[colom].facing_right)
 		cube->ray[colom].x_nearest += CELL_SIZE;
 	cube->ray[colom].y_nearest = cube->player->y
 		+ (cube->ray[colom].x_nearest - cube->player->x)
 		* (tan(cube->ray[colom].ray_angle));
 	xstep = CELL_SIZE;
-	if (cube->ray[colom].facingLeft == true)
+	if (cube->ray[colom].facing_left == true)
 		xstep *= -1;
 	ystep = xstep * (tan(cube->ray[colom].ray_angle));
-	if (cube->ray[colom].facingUp && ystep > 0)
+	if (cube->ray[colom].facing_up && ystep > 0)
 		ystep *= -1;
-	if (cube->ray[colom].facingDown && ystep < 0)
+	if (cube->ray[colom].facing_down && ystep < 0)
 		ystep *= -1;
 	check_verti_inter(cube, xstep, ystep, colom);
 }

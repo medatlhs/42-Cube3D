@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 MLX42 = -L./MLX42/lib -lmlx42
 GLFW  = -L$(HOME)/.brew/Cellar/glfw/3.4/lib -lglfw
 

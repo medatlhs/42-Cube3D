@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:16:01 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/20 14:50:37 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:06:18 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	render_ceilling(t_cube cube, int x, int wall_top_px)
 	while (++k < wall_top_px)
 	{
 		my_pixel_put(&cube, x, k,
-			get_color(cube.map->C[0], cube.map->C[1], cube.map->C[2], 255));
+			get_color(cube.map->c[0], cube.map->c[1], cube.map->c[2], 255));
 	}
 }
 
@@ -29,7 +29,7 @@ void	render_floor(t_cube cube, int x, int wall_bot_px)
 	while (++wall_bot_px < HEIGHT)
 	{
 		my_pixel_put(&cube, x, wall_bot_px,
-			get_color(cube.map->F[0], cube.map->F[1], cube.map->F[2], 255));
+			get_color(cube.map->f[0], cube.map->f[1], cube.map->f[2], 255));
 	}
 }
 
@@ -43,7 +43,7 @@ void	render_stripe(t_cube cube, int colom, int top_px, int bot_px)
 
 	mytexture = get_texture(cube, cube.ray[colom]);
 	wall_height = HEIGHT * 100 / cube.ray[colom].distance;
-	texture_x = get_texture_x(cube, colom);
+	texture_x = get_texture_x(mytexture, cube, colom);
 	texture_px = (uint32_t *)mytexture->pixels;
 	while (top_px <= bot_px)
 	{

@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:31:40 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/19 02:48:28 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:36:18 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	update_position(t_cube *cube)
 {
-	if (cube->player->rotateRight == true)
-		cube->player->degree += 4;
-	else if (cube->player->rotateLeft == true)
-		cube->player->degree -= 4;
-	if (cube->player->moveFront == true)
+	if (cube->player->rotate_right == true)
+		cube->player->degree += 6;
+	else if (cube->player->rotate_left == true)
+		cube->player->degree -= 6;
+	if (cube->player->move_front == true)
 		move_forward(cube);
-	else if (cube->player->moveBack == true)
+	else if (cube->player->move_back == true)
 		move_back(cube);
-	else if (cube->player->moveRight == true)
+	else if (cube->player->move_right == true)
 		move_sides(cube, 1);
-	else if (cube->player->moveLeft == true)
+	else if (cube->player->move_left == true)
 		move_sides(cube, -1);
 }
 

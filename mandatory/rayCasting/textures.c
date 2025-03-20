@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/20 02:22:47 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:20:52 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ void	load_textures(t_cube *cube)
 	}
 	if (!cube->texture->no || !cube->texture->ea
 		|| !cube->texture->we || !cube->texture->so)
+	{
 		ft_error("Error: failed to load textures");
+	}
 }
 
 mlx_texture_t	*get_texture(t_cube cube, t_ray ray)
@@ -52,7 +54,7 @@ mlx_texture_t	*get_texture(t_cube cube, t_ray ray)
 	return (NULL);
 }
 
-float	get_texture_x(t_cube data, int colom)
+float	get_texture_x(mlx_texture_t *texture, t_cube data, int colom)
 {
 	float	texture_x;
 	float	pos_in_wall;
@@ -62,6 +64,10 @@ float	get_texture_x(t_cube data, int colom)
 	else
 		pos_in_wall = fmodf(data.ray[colom].verti_hitp->y, (float)CELL_SIZE);
 	texture_x = pos_in_wall * data.texture->we->width / (float)CELL_SIZE;
+	if (texture_x < 0)
+		texture_x = 0;
+	else if (texture_x >= texture->width)
+		texture_x = texture->width - 1;
 	return (texture_x);
 }
 
@@ -74,5 +80,9 @@ int	get_texture_y(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 	wall_top_px = (cube->window->height / 2) - (wallHeight / 2);
 	step = (float)texture->height / wallHeight;
 	texture_y = (y - wall_top_px) * step;
+	if (texture_y < 0)
+		texture_y = 0;
+	else if (texture_y >= texture->height)
+		texture_y = texture->height - 1;
 	return (texture_y);
 }

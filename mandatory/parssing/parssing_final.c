@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 21:30:24 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/18 16:28:03 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 16:09:57 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,52 +121,25 @@ int	parsing_final(char	*file, t_cube	*cub)
 	char	**new_map;
 
 	new_map = parsing(file);
-	if (!new_map)
-		return (0);
 	cub->map = malloc(sizeof(t_map));
-	if (!cub->map)
+	if (!cub->map || !new_map)
 		return (free_mat(new_map), 0);
-	cub->map->C = get_colors(new_map, "C ");
-	if (!cub->map->C)
+	cub->map->c = get_colors(new_map, "C ");
+	if (!cub->map->c)
 		return (free_mat(new_map), 0);
-	cub->map->F = get_colors(new_map, "F ");
-	if (!cub->map->F)
-		return (free(cub->map->C),
+	cub->map->f = get_colors(new_map, "F ");
+	if (!cub->map->f)
+		return (free(cub->map->c),
 			free_mat(new_map), 0);
 	cub->map->textur = get_textures(new_map);
 	if (!cub->map)
-		return (free(cub->map->C), free(cub->map->F),
+		return (free(cub->map->c), free(cub->map->f),
 			free_mat(new_map), 0);
 	cub->map->map = make_map_rectangle(new_map);
 	if (!cub->map->map)
-		return (free(cub->map->C), free(cub->map->F),
+		return (free(cub->map->c), free(cub->map->f),
 			free_mat(new_map), 0);
 	cub->map->row = get_num_rows(cub->map->map);
 	cub->map->colum = get_num_columns(cub->map->map[0]);
-	printf("\n\n----------------colors   F -----------------------\n");
-	printf("\t nbr row est : %d\t\n", cub->map->row);
-	printf("\n\n----------------colors   F -----------------------\n");
-	printf("\t nbr row est : %d\t\n", cub->map->colum);
-	printf("\n\n----------------colors   F -----------------------\n\n\n");
-	affiche_color(cub->map->F, 3);
-	printf("\n\n----------------colors    C -----------------------\n");
-	affiche_color(cub->map->C, 3);
-	printf("\n\n----------------textures -----------------------\n\n\n");
-	print_textures(cub->map->textur);
-	printf("\n\n----------------Maap   -----------------------\n\n\n");
-	afficher_tableau(cub->map->map);
 	return (free_mat(new_map), 1);
 }
-
-// void f()
-// {
-// 	system("leaks cube3d");
-// }
-
-// int	main()
-// {
-// 	t_cube	cube; // atexit(f);
-// 	if (parsing_final("test.cub", &cube))
-// 		return (1);
-// 	return (0);
-// }

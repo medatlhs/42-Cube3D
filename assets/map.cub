@@ -2,12 +2,12 @@ SO /Users/moait-la/Downloads/last/assets/textures/so.png
 WE /Users/moait-la/Downloads/last/assets/textures/we.png
 NO /Users/moait-la/Downloads/last/assets/textures/no.png
 EA /Users/moait-la/Downloads/last/assets/textures/ea.png
-C 42,97,110
-F 20,20,20
+C 20,20,20
+F 50,50,50
 
-11111111
-10001101
-1N000001
-10001111
-10011001
-11111111
+11111111111111
+10101100000001
+10E00000010001
+10001110000001
+10011000000001
+11111111111111
