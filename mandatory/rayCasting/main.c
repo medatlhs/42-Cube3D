@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:13:07 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/18 17:08:11 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:46:22 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ void	render_frame(void	*param)
 	t_cube	*cube;
 
 	cube = (t_cube *)param;
-	clear_image(cube);
+	// clear_image(cube);
 	update_position(cube);
 	cast_all_rays(cube);
 	render3d_scene(*cube);
-
 	free_all(cube);
 }
 void f()

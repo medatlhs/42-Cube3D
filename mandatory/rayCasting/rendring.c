@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:16:01 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/17 17:49:57 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/19 23:16:13 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,14 @@ void	render_ceilling(t_cube cube, int x, int wall_top_px)
 
 	k = -1;
 	while (++k < wall_top_px)
-		my_pixel_put(&cube, x, k, get_color(50, 50, 50, 255));
+		my_pixel_put(&cube, x, k, get_color(cube.map->C[0], cube.map->C[1], cube.map->C[2], 255));
 }
 
 void	render_floor(t_cube cube, int x, int wall_bot_px)
 {
 	while (++wall_bot_px < HEIGHT)
-	{
-		if (x % 2 == 0)
-			my_pixel_put(&cube, x, wall_bot_px, get_color(150, 150, 150, 255));
-		else
-			my_pixel_put(&cube, x, wall_bot_px, get_color(0, 0, 0, 255));
-	}
+			my_pixel_put(&cube, x, wall_bot_px, get_color(cube.map->F[0], cube.map->F[1], cube.map->F[2], 255));
+	// andak tnsa lcolors !!!
 }
 
 void	render_stripe(t_cube cube, int colom, int top_px, int bot_px)
@@ -48,7 +44,7 @@ void	render_stripe(t_cube cube, int colom, int top_px, int bot_px)
 	{
 		texture_y = get_texture_y(mytexture, &cube, top_px, wall_height);
 		my_pixel_put(&cube, colom, top_px,
-			reverse_bytes(
+			abgr_to_rgba(
 				texture_px[texture_y * mytexture->width + texture_x]));
 		top_px++;
 	}

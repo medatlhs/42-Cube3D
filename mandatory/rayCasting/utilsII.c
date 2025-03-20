@@ -6,25 +6,13 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 16:11:10 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/17 17:31:59 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:41:36 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cube.h"
 
-uint32_t	rgb_to_argb(int r, int g, int b)
-{
-	uint32_t	color;
-
-	color = 0;
-	color |= 0xFF << 24;
-	color |= r << 16;
-	color |= g << 8;
-	color |= b;
-	return (color);
-}
-
-uint32_t	reverse_bytes(uint32_t c)
+uint32_t	abgr_to_rgba(uint32_t c)
 {
 	uint32_t	b;
 
@@ -52,7 +40,6 @@ void	get_closest_hit(t_cube *cube, int colom)
 {
 	float	hroiz_dis;
 	float	verti_dis;
-	float	fixed_dis;
 	float	angle_rad;
 
 	hroiz_dis = sqrt(pow(cube->ray[colom].horiz_hitp->x - cube->player->x, 2)
@@ -60,13 +47,12 @@ void	get_closest_hit(t_cube *cube, int colom)
 	verti_dis = sqrt(pow(cube->ray[colom].verti_hitp->x - cube->player->x, 2)
 			+ pow(cube->ray[colom].verti_hitp->y - cube->player->y, 2));
 	angle_rad = cube->player->degree * (M_PI / 180);
-	fixed_dis = cos(cube->ray[colom].ray_angle - angle_rad);
 	if (hroiz_dis < verti_dis)
 	{
 		cube->ray[colom].closest_hit = HORIZONTAL;
-		cube->ray[colom].distance = hroiz_dis * fixed_dis;
+		cube->ray[colom].distance = hroiz_dis * cos(cube->ray[colom].ray_angle - angle_rad);
 		return ;
 	}
 	cube->ray[colom].closest_hit = VERTICAL;
-	cube->ray[colom].distance = verti_dis * fixed_dis;
+	cube->ray[colom].distance = verti_dis * cos(cube->ray[colom].ray_angle - angle_rad);
 }

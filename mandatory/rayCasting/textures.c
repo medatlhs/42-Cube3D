@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 15:28:53 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/18 17:11:27 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/19 03:20:16 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,15 @@ float	get_texture_x(t_cube data, int colom)
 int	get_texture_y(mlx_texture_t *texture, t_cube *cube, int y, int wallHeight)
 {
 	float	step;
-	float	offset_y;
+	float	texture_y;
 	int		wall_top_px;
 
 	wall_top_px = (cube->window->height / 2) - (wallHeight / 2);
 	step = (float)texture->height / wallHeight;
-	offset_y = ((y - wall_top_px) * step);
-	if (offset_y >= texture->height)
-		offset_y = texture->height - 1;
-	if (offset_y < 0)
-		offset_y = 0;
-	return (offset_y);
+	texture_y = (y - wall_top_px) * step;
+	if (texture_y >= texture->height)
+		texture_y = texture->height - 1;
+	if (texture_y < 0)
+		texture_y = 0;
+	return (texture_y);
 }

@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:19:33 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/18 18:08:30 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/19 02:42:14 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ void	afficher_tableau(char **str);
 void	affiche_color(int *tab, int size);
 void	print_textures(t_txture *textures);
 
-unsigned int	reverse_bytes(uint32_t c);
-unsigned int	rgb_to_argb(int r, int g, int b);
+unsigned int	abgr_to_rgba(uint32_t c);
 mlx_texture_t	*get_texture(t_cube cube, t_ray ray);
 
 #endif

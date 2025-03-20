@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:35:27 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/13 16:18:04 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/18 20:51:20 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	cast_all_rays(t_cube *cube)
 
 	first_ray_ang = (cube->player->degree - (cube->player->fov / 2));
 	first_ray_ang = first_ray_ang * (M_PI / (float)180);
-	angle_inc = (cube->player->fov * (M_PI / 180)) / (float)WIDTH;
+	angle_inc = (cube->player->fov * (M_PI / 180)) / (float)NUM_RAYS;
 	colom = -1;
-	while (++colom < WIDTH)
+	while (++colom < NUM_RAYS)
 	{
 		first_ray_ang = normalize(first_ray_ang);
 		init_ray_data(cube, first_ray_ang, colom);
