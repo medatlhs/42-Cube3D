@@ -24,11 +24,6 @@ void	render_frame(void	*param)
 	free_all(cube);
 }
 
-void f()
-{
-	system("leaks cube");
-}
-
 int	main(int ac, char **av)
 {
 	t_cube	cube;

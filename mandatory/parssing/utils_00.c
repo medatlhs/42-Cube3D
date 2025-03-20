@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 11:51:08 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/18 16:28:07 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:47:07 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	free_mat(char **str)
 {
 	int	i;
 
+	if (str == NULL)
+		return ;
 	i = -1;
 	while (str[++i])
 		free(str[i]);

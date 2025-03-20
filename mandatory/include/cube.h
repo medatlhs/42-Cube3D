@@ -6,7 +6,7 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 17:19:33 by moait-la          #+#    #+#             */
-/*   Updated: 2025/03/20 16:37:15 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:48:31 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "../parssing/get_nextline_/get_next_line.h"
 # define WIDTH  1700
 # define HEIGHT  1000
-# define ER "map ne pas ferme \n"
+# define ER "map ne pas ferme \n" 
 # define NUM_RAYS WIDTH
 # define CELL_SIZE 64
 

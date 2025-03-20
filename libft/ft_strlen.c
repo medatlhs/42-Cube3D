@@ -6,12 +6,13 @@
 /*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 15:57:01 by moait-la          #+#    #+#             */
-/*   Updated: 2023/12/10 22:47:32 by moait-la         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:45:41 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
 size_t	ft_strlen(const char *str)
 {
 	size_t	i;

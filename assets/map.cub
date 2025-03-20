@@ -1,13 +1,14 @@
-SO /Users/moait-la/Downloads/last/assets/textures/so.png
-WE /Users/moait-la/Downloads/last/assets/textures/we.png
-NO /Users/moait-la/Downloads/last/assets/textures/no.png
-EA /Users/moait-la/Downloads/last/assets/textures/ea.png
-C 20,20,20
+SO /Users/moait-la/Desktop/cuby/assets/textures/so.png
+WE /Users/moait-la/Desktop/cuby/assets/textures/we.png
+NO /Users/moait-la/Desktop/cuby/assets/textures/no.png
+EA /Users/moait-la/Desktop/cuby/assets/textures/ea.png
+
+C 20,10,20
 F 50,50,50
 
 11111111111111
 10101100000001
-10E00000010001
+10W00000010001
 10001110000001
 10011000000001
 11111111111111

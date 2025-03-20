@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achahlao <achahlao@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moait-la <moait-la@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 21:24:48 by achahlao          #+#    #+#             */
-/*   Updated: 2025/03/11 20:50:49 by achahlao         ###   ########.fr       */
+/*   Updated: 2025/03/20 19:46:47 by moait-la         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 # include <fcntl.h>
 # include <limits.h>
 
+size_t	ft_strlen1(char *s);
 char	*ft_strjoin1(char *s1, char *s2);
 int		ft_strchr1(char *s, int c);
-size_t	ft_strlen1(char *s);
 char	*ft_read_file(int fd, char *result);
 char	*ft_line_line(char *ch);
 char	*ft_next_line(char *str);
